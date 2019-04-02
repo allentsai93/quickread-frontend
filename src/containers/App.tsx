@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
-import './App.css';
+import { Route, Switch, Link } from "react-router-dom";
+import Main from './Main';
+import Direct from './Direct';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <Link to="/" >Main</Link>
         </header>
+        <Switch>
+            <Route exact path='/' component={Main} />
+            <Route path="/:url" component={Direct} />
+        </Switch>
       </div>
     );
   }
