@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #eae9e9;
+}
+
+.ul {
+    list-style: none;
+    padding: 0 2vmax;
+    margin: 0;
+    width: 75vmax;
+}
+
+.li {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #a0a0a0;
+    border-radius: 10px;
+    background-color: whitesmoke;
+}
