@@ -1,0 +1,10 @@
+header {
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+}

@@ -4,6 +4,8 @@
     align-items: center;
     width: 100%;
     background-color: #eae9e9;
+    font-size: 16px;
+    padding-top: 50px;
 }
 
 .ul {
@@ -11,12 +13,17 @@
     padding: 0 2vmax;
     margin: 0;
     width: 75vmax;
+    margin-top: 30px;
 }
 
 .li {
     padding: 10px;
-    margin: 10px;
-    border: 1px solid #a0a0a0;
-    border-radius: 10px;
+    margin: 1px 10px;
     background-color: whitesmoke;
+    padding-top: 0;
+    transition: background-color 50ms ease-in;
+}
+
+.li:hover {
+    background-color: #eae9e9;
 }

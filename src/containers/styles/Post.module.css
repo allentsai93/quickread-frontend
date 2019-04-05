@@ -1,0 +1,9 @@
+.article span {
+    font-size: 0.6em;
+    text-transform: uppercase;
+}
+
+.article h2 {
+    font-size: 1.1em;
+    font-weight: 100;
+}

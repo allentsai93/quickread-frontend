@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Content from './Content';
+import styles from './styles/Post.module.css';
 
 type TParams =  { 
     title: string;
@@ -16,7 +17,7 @@ const Post = ({ title, subreddit, permalink, url, author, created, domain, ups }
     const [content, setContent] = React.useState(false);
 
     return (
-        <article onClick={() => setContent(!content)}>
+        <article className={styles.article} onClick={() => setContent(!content)}>
             <span>{`Upvotes: ${ups} Posted by u/${author} ${new Date(created * 1000).getHours()} hours ago`}</span>
             <h4>{subreddit}</h4>
             <h2>{title}</h2>

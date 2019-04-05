@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Main from './Main';
 import Direct from './Direct';
+import Header from './Header';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <Link to="/" >Main</Link>
-        </header>
+        <Header />
         <Switch>
             <Route exact path='/' component={Main} />
             <Route path="/:url" component={Direct} />
