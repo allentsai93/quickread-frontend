@@ -37,9 +37,10 @@ const Content = ({url, permalink, domain} : TParams) => {
                     {data.condensedContent ? <p>{data.condensedContent}</p> : <p>Sorry, the article content could not be scraped.</p>}
                     <h3>{`Published ${data.date_published} by ${data.author}`}</h3>
                     <span className={styles.data}>
-                        <span>{`Condensed word count: ${data.condensedWordCount}, Original word count: ${data.originalWordCount}`}</span>
-                        <span>{`Article Link: ${url}, Reddit Link: ${permalink}`}</span>
-                        <span>{`Scraped from ${url}`}</span>
+                        <span className={styles.datatext}>{`Condensed word count: ${data.condensedWordCount}, Original word count: ${data.originalWordCount}`}</span>
+                        <span className={styles.datatext}>{`Article Link: `}<a href={url}>{url}</a></span>
+                        <span className={styles.datatext}>{`Reddit Link: `}<a href={permalink}>{permalink}</a></span>
+                        <span className={styles.datatext}>{`Scraped from: `}<a href={url}>{url}</a></span>
                     </span>
                 </div>
             : <p>Summarizing...</p>

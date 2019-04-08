@@ -2,6 +2,9 @@
     display: flex;
     flex-flow: column wrap;
     font-size: 0.7em;
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 6px;
 }
 
 .scrapedContent {
@@ -10,4 +13,12 @@
     border-radius: 13px;
     width: 95%;
     margin: 15px auto;
+}
+
+.data .datatext {
+    font-size: 1em;
+}
+
+a {
+    color: #bb9602
 }
