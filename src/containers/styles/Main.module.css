@@ -15,7 +15,8 @@
     padding: 0;
     margin: 0;
     margin-top: 5px;
-    width: 75vmax;
+    flex: 3;
+    width: auto;
 }
 
 .li {
@@ -24,6 +25,7 @@
     background-color: #212121;
     padding-top: 0;
     transition: background-color 50ms ease-in;
+    width: auto;
 }
 
 .li:hover {
@@ -31,11 +33,10 @@
 }
 
 .headlinesContainer {
-    margin-top: 30px;
     display: flex;
     flex-flow: row wrap;
-    width: 95vmax;
-    min-height: 350px;
+    width: 100%;
+    min-height: 50vh;
     height: auto;
 }
 
@@ -44,7 +45,7 @@
 .subHeadlineContainer {
     flex: 30%;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     min-width: 390px;
 }
 
@@ -54,4 +55,30 @@
 
 .subHeadlineContainer div:nth-child(2) {
     flex: 40%;
+}
+
+.listContainer {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    width: 75vmax;
+    max-width: 100%;
+    flex: 10;
+}
+
+.listControlContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: auto;
+    max-width: 100%;
+}
+
+.buttonContainer {
+    display: flex;
+    width: auto;
+    flex: 1;
+    justify-content: center;
+    position: relative;
 }

@@ -8,11 +8,11 @@
 }
 
 .scrapedContent {
-    padding: 20px;
     border: 1px solid #e2e2e2;
     border-radius: 13px;
     width: 95%;
     margin: 15px auto;
+    overflow: hidden;
 }
 
 .data .datatext {
@@ -21,4 +21,15 @@
 
 a {
     color: #bb9602
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.contentContainer {
+    width: 97%;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }

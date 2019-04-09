@@ -34,14 +34,18 @@ const Content = ({url, permalink, domain} : TParams) => {
             { data ? 
                 <div className={styles.scrapedContent}>
                     {data.lead_image_url ? <img src={data.lead_image_url}/> : null}
-                    {data.condensedContent ? <p>{data.condensedContent}</p> : <p>Sorry, the article content could not be scraped.</p>}
-                    <h3>{`Published ${data.date_published} by ${data.author}`}</h3>
-                    <span className={styles.data}>
-                        <span className={styles.datatext}>{`Condensed word count: ${data.condensedWordCount}, Original word count: ${data.originalWordCount}`}</span>
-                        <span className={styles.datatext}>{`Article Link: `}<a href={url}>{url}</a></span>
-                        <span className={styles.datatext}>{`Reddit Link: `}<a href={permalink}>{permalink}</a></span>
-                        <span className={styles.datatext}>{`Scraped from: `}<a href={url}>{url}</a></span>
-                    </span>
+                    {data.condensedContent ? 
+                        <div className={styles.contentContainer}>
+                            <p>{data.condensedContent}</p>
+                            <h3>{`Published ${data.date_published} by ${data.author}`}</h3>
+                            <span className={styles.data}>
+                                <span className={styles.datatext}>{`Condensed word count: ${data.condensedWordCount}, Original word count: ${data.originalWordCount}`}</span>
+                                <span className={styles.datatext}>{`Article Link: `}<a href={url}>{url}</a></span>
+                                <span className={styles.datatext}>{`Reddit Link: `}<a href={permalink}>{permalink}</a></span>
+                                <span className={styles.datatext}>{`Scraped from: `}<a href={url}>{url}</a></span>
+                            </span>
+                        </div>
+                    : <div className={styles.contentContainer}><p>Sorry, the article content could not be scraped.</p></div>}
                 </div>
             : <p>Summarizing...</p>
             }
