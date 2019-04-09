@@ -46,7 +46,7 @@
     flex: 30%;
     display: flex;
     flex-flow: column nowrap;
-    min-width: 390px;
+    min-width: 320px;
 }
 
 .subHeadlineContainer div:first-child {
