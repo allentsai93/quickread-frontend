@@ -1,9 +1,76 @@
 .article span {
-    font-size: 0.6em;
+    font-size: 0.4em;
     text-transform: uppercase;
 }
 
 .article h2 {
-    font-size: 1.1em;
+    font-size: 0.7em;
     font-weight: 100;
+}
+
+.headlineImg {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
+
+.headlineArticle {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.headlineContent {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-left: 2%;
+    box-sizing: border-box;
+    background: linear-gradient(to bottom, rgba(19, 19, 19 ,0) 0%,rgb(19, 19, 19) 100%);
+}
+
+.img {
+    width: auto;
+    height: 100%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+.imgContainer {
+    overflow: hidden;
+    width: 4vmax;
+    height: 4vmax;
+    position: relative;
+    margin-right: 1vmax;
+    border: 2px solid #334a4e;
+    border-radius: 50%;
+}
+
+.content {
+    order: 2;
+    max-width: 80%;
+}
+
+.article {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    position: relative;
+}
+
+.contentContainer {
+    flex: 100%;
+    order: 3;
+    transition: min-height 100ms ease-in;
+    min-height: 0;
+}
+
+.contentContainerActive {
+    min-height: 300px;
+    transition: min-height 100ms ease-in;
 }

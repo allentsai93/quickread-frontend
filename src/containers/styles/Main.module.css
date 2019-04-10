@@ -21,7 +21,7 @@
 
 .li {
     padding: 10px;
-    margin: 1px 0px;
+    margin: 5px 0px;
     background-color: #212121;
     padding-top: 0;
     transition: background-color 50ms ease-in;
@@ -64,6 +64,7 @@
     width: 75vmax;
     max-width: 100%;
     flex: 10;
+    min-width: 300px;
 }
 
 .listControlContainer {
@@ -73,6 +74,7 @@
     align-items: flex-start;
     width: auto;
     max-width: 100%;
+    margin-top: 30px;
 }
 
 .buttonContainer {
@@ -81,4 +83,17 @@
     flex: 1;
     justify-content: center;
     position: relative;
+    min-width: 100px;
+}
+
+.loadingContainer {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loadingContainer img {
+    max-width: 60px;
 }

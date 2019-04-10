@@ -11,16 +11,17 @@ type TParams =  {
     created: number;
     domain: string;
     ups: number;
+    image: string;
 };
 
 
-const HeadlinePost = ({ title, subreddit, permalink, url, author, created, domain, ups }: TParams) => {
+const HeadlinePost = ({ title, subreddit, permalink, url, author, created, domain, ups, image }: TParams) => {
     const [content, setContent] = React.useState(false);
     const [data, setData] = React.useState<null | {title: string, author: any, date_published: string, lead_image_url: string, originalWordCount: number, condensedWordCount: number, condensedContent: string, percentCondensed: string}>(null);
 
     React.useEffect(() => {
         if(!data) {
-            API.getData(`http://localhost:3001/${url}`).then(data => {
+            API.getData(`http://localhost:3001/summarize/${url}`).then(data => {
                 setData(data);
             }).catch(err => {
                 const testData = {
@@ -48,9 +49,7 @@ const HeadlinePost = ({ title, subreddit, permalink, url, author, created, domai
             { content && data ? 
                 <p>{data.condensedContent}</p>
             : null}
-            { data ? 
-                <img src={data.lead_image_url} className={styles.img}/>
-            : null}
+                <img src={image} className={styles.img}/>
         </article>
     )
 };

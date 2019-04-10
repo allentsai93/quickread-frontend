@@ -11,16 +11,21 @@ type TParams =  {
     created: number;
     domain: string;
     ups: number;
+    image: string;
+    headline: boolean;
 };
 
-const Post = ({ title, subreddit, permalink, url, author, created, domain, ups }: TParams) => {
+const Post = ({ title, subreddit, permalink, url, author, created, domain, ups, image, headline }: TParams) => {
     const [content, setContent] = React.useState(false);
 
     return (
-        <article className={styles.article} onClick={() => setContent(!content)}>
-            <span>{`Upvotes: ${ups} Posted by u/${author} ${new Date(created * 1000).getHours()} hours ago`}</span>
-            <h4>{subreddit}</h4>
-            <h2>{title}</h2>
+        <article className={headline ? styles.headlineArticle : styles.article} onClick={() => setContent(!content)}>
+            <div className={headline ? styles.headlineContent : styles.content}>
+                <span>{`Upvotes: ${ups} Posted by u/${author} ${new Date(created * 1000).getHours()} hours ago`}</span>
+                <h4>{subreddit}</h4>
+                <h2>{title}</h2>
+            </div>
+            <div className={`${styles.contentContainer} ${content ? styles.contentContainerActive : ''}`}>
             { content ? 
                 <Content 
                     url={url}
@@ -28,6 +33,12 @@ const Post = ({ title, subreddit, permalink, url, author, created, domain, ups }
                     permalink={permalink}
                 />
             : null}
+            </div>
+            {headline ? <img src={image} className={styles.headlineImg}/> :
+                <div className={styles.imgContainer}>
+                    <img src={image} className={styles.img}/>
+                </div>
+            }
         </article>
     )
 };
