@@ -37,7 +37,7 @@
 
 .headline1 { 
     flex: 70%; 
-    min-width: 36vmax;
+    width: 80vw;
 }
 
 .subHeadlineContainer {
