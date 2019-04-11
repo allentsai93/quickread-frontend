@@ -21,6 +21,9 @@
     position: relative;
     overflow: hidden;
     height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .headlineContent {
@@ -61,6 +64,7 @@
     flex-flow: row wrap;
     align-items: center;
     position: relative;
+    background-image: none !important;
 }
 
 .contentContainer {

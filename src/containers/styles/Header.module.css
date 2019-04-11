@@ -2,10 +2,15 @@ header {
     position: fixed;
     height: 50px;
     width: 100%;
-    background-color: #2d2d2d;
+    background-color: rgba(0,0,0,0.7);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
     flex-flow: row wrap;
+    transition: background-color 100ms ease-in;
+}
+
+header:hover {
+    background-color: black;
 }
