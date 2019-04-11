@@ -1,7 +1,14 @@
 .Button {
     display: block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.Button img {
+    width: 50px;
+    display: block;
+    margin: 0 auto;
     position: sticky;
     top: 100px;
-    height: auto;
-    width: 3em;
 }

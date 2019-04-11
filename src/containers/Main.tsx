@@ -24,26 +24,10 @@ const Main: React.FC = () => {
       {loaded ? (
         <>
           <div className={styles.container}>
-            <div className={styles.headlinesContainer}>
-              {redditData!.slice(0, 1).map((post: any, i) => (
-                <div key={post.data.id} className={styles.headline1}>
-                  <Post
-                    title={post.data.title}
-                    subreddit={post.data.subreddit}
-                    permalink={post.data.permalink}
-                    url={post.data.url}
-                    author={post.data.author}
-                    created={post.data.created}
-                    domain={post.data.domain}
-                    ups={post.data.ups}
-                    image={post.data.parsed.lead_image_url}
-                    headline
-                  />
-                </div>
-              ))}
-              <div className={styles.subHeadlineContainer}>
-                {redditData!.slice(1, 3).map((post: any, i) => (
-                  <div key={post.data.id}>
+            <div className={styles.headlineCarousel}>
+              <div className={styles.headlinesContainer}>
+                {redditData!.slice(0, 1).map((post: any, i) => (
+                  <div key={post.data.id} className={styles.headline1}>
                     <Post
                       title={post.data.title}
                       subreddit={post.data.subreddit}
@@ -58,6 +42,24 @@ const Main: React.FC = () => {
                     />
                   </div>
                 ))}
+                <div className={styles.subHeadlineContainer}>
+                  {redditData!.slice(1, 3).map((post: any, i) => (
+                    <div key={post.data.id}>
+                      <Post
+                        title={post.data.title}
+                        subreddit={post.data.subreddit}
+                        permalink={post.data.permalink}
+                        url={post.data.url}
+                        author={post.data.author}
+                        created={post.data.created}
+                        domain={post.data.domain}
+                        ups={post.data.ups}
+                        image={post.data.parsed.lead_image_url}
+                        headline
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
             <div className={styles.listControlContainer}>

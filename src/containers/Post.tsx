@@ -17,9 +17,9 @@ type TParams =  {
 
 const Post = ({ title, subreddit, permalink, url, author, created, domain, ups, image, headline }: TParams) => {
     const [content, setContent] = React.useState(false);
-
+    const showContent = !headline ? () => setContent(!content) : () => {};
     return (
-        <article className={headline ? styles.headlineArticle : styles.article} onClick={() => setContent(!content)}>
+        <article className={headline ? styles.headlineArticle : styles.article} onClick={showContent}>
             <div className={headline ? styles.headlineContent : styles.content}>
                 <span>{`Upvotes: ${ups} Posted by u/${author} ${new Date(created * 1000).getHours()} hours ago`}</span>
                 <h4>{subreddit}</h4>

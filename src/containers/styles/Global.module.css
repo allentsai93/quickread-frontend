@@ -4,6 +4,10 @@ body, div {
     box-sizing: border-box;
 }
 
+body {
+    width: 100%;
+}
+
 h2 {
     font-size: 1em;
 }
