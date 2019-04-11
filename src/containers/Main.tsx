@@ -7,6 +7,7 @@ import subtract from "../assets/sharp-delete_sweep-24px.svg";
 import add from "../assets/sharp-add_circle-24px.svg";
 import Button from "../components/Button";
 import spinner from "../assets/spinner.svg";
+import ListPosts from "./ListPosts";
 
 const Main: React.FC = () => {
   const [redditData, setRedditData] = React.useState<null | []>([]);
@@ -67,7 +68,7 @@ const Main: React.FC = () => {
                 <Button src={subtract} />
               </div>
               <div className={styles.listContainer}>
-                <ul className={styles.ul}>
+                {/* <ul className={styles.ul}>
                   {redditData!.slice(3).map((post: any) => (
                     <li className={styles.li} key={post.data.id}>
                       <Post
@@ -84,7 +85,8 @@ const Main: React.FC = () => {
                       />
                     </li>
                   ))}
-                </ul>
+                </ul> */}
+                <ListPosts posts={redditData!.slice(3)}/>
               </div>
               <div className={styles.buttonContainer}>
                 <Button src={add} />

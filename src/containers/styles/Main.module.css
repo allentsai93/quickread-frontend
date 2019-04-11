@@ -4,7 +4,6 @@
     align-items: center;
     width: 100%;
     font-size: 16px;
-    padding-top: 50px;
     flex-flow: column wrap;
     color: white;
     word-wrap: break-word;
@@ -36,12 +35,12 @@
 }
 
 .headline1 { 
-    flex: 70%; 
-    width: 80vw;
+    flex: 60%; 
+    min-width: 600px;
 }
 
 .subHeadlineContainer {
-    flex: 30%;
+    flex: 40%;
     display: flex;
     flex-flow: column nowrap;
     min-width: 300px;
@@ -111,7 +110,7 @@
 .headlinesContainer {
     display: flex;
     flex-flow: row nowrap;
-    width: auto;
+    width: 100%;
     height: 100%;
     position: absolute;
 }
@@ -130,5 +129,20 @@
     }
     .buttonContainer {
         min-width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .subHeadlineContainer {
+        min-width: 800px;
+        flex-flow: row nowrap;
+    }
+
+    .subHeadlineContainer div {
+        width: 400px;
+    }
+
+    .headline1 {
+        min-width: 300px;
     }
 }
