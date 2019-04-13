@@ -22,7 +22,7 @@ const Post = ({ title, subreddit, permalink, url, author, created, domain, ups, 
         <article className={headline ? styles.headlineArticle : styles.article} onClick={showContent} style={{backgroundImage: `url(${image})`}}>
             <div className={headline ? styles.headlineContent : styles.content}>
                 <span>{`Upvotes: ${ups} Posted by u/${author} ${new Date(created * 1000).getHours()} hours ago`}</span>
-                <h4>{subreddit}</h4>
+                {headline ? <h4>{subreddit}</h4> : null}
                 <h2>{title}</h2>
             </div>
             <div className={`${styles.contentContainer} ${content ? styles.contentContainerActive : ''}`}>
