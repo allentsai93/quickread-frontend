@@ -28,11 +28,15 @@ type RedditPost = {
 type MyState = {
   redditData: RedditPost[][];
   loaded: boolean;
+  showSelection: boolean;
+  showSpinner: boolean;
 };
 class Main extends Component<{}, MyState> {
   state: MyState = {
     redditData: [],
-    loaded: false
+    loaded: false,
+    showSelection: false,
+    showSpinner: false
   };
 
   componentDidMount() {
@@ -44,9 +48,26 @@ class Main extends Component<{}, MyState> {
     });
   }
 
-  addPostsHandler = () => {
-    console.log('hit');
-  }
+  addPostsHandler = (ev: string) => {
+    this.setState({ showSpinner: true, showSelection: false }, () => {
+      API.getData("http://localhost:3001/news/parse").then(data => {
+        this.setState(prevState => ({
+          redditData: [...prevState.redditData, data],
+          showSpinner: false
+        }));
+      });
+    });
+  };
+
+  showSelectionHandler = () => {
+    this.setState(prevState => ({ showSelection: !prevState.showSelection }));
+  };
+
+  removeListPostsHandler = () => {
+    const nextState = [...this.state.redditData];
+    nextState.pop();
+    this.setState({ redditData: nextState });
+  };
 
   render() {
     const listOfPosts = this.state.redditData.map((posts, i) => (
@@ -99,14 +120,37 @@ class Main extends Component<{}, MyState> {
                 </div>
               </div>
               <div className={styles.listControlContainer}>
+                {this.state.redditData.length > 1 ? 
                 <div className={styles.buttonContainer}>
-                  <Button src={subtract} event={this.addPostsHandler}/>
+                  <Button src={subtract} event={this.removeListPostsHandler} />
                 </div>
+                : null }
                 <div className={styles.listContainer}>
                   {listOfPosts}
+                  {this.state.showSelection ? (
+                    <ul>
+                      <li onClick={() => this.addPostsHandler("test")}>
+                        Option 1
+                      </li>
+                      <li onClick={() => this.addPostsHandler("test")}>
+                        Option 2
+                      </li>
+                      <li onClick={() => this.addPostsHandler("test")}>
+                        Option 3
+                      </li>
+                      <li onClick={() => this.addPostsHandler("test")}>
+                        Option 4
+                      </li>
+                    </ul>
+                  ) : null}
+                  {this.state.showSpinner ? (
+                    <div className={styles.loadingContainerMore}>
+                      <img src={spinner} />
+                    </div>
+                  ) : null}
                 </div>
                 <div className={styles.buttonContainer}>
-                  <Button src={add} event={this.addPostsHandler}/>
+                  <Button src={add} event={this.showSelectionHandler} />
                 </div>
               </div>
             </div>
