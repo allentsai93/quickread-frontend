@@ -7,7 +7,8 @@ import add from "../assets/sharp-add_circle-24px.svg";
 import Button from "../components/Button";
 import spinner from "../assets/spinner.svg";
 import ListPosts from "./ListPosts";
-let Swipe = require('react-easy-swipe').default;
+declare const require:(moduleId:string) => any;
+const { Swipeable } = require('react-swipeable');
 
 type RedditPost = {
   data: {
@@ -31,13 +32,15 @@ type MyState = {
   loaded: boolean;
   showSelection: boolean;
   showSpinner: boolean;
+  positionX: number;
 };
 class Main extends Component<{}, MyState> {
   state: MyState = {
     redditData: [],
     loaded: false,
     showSelection: false,
-    showSpinner: false
+    showSpinner: false,
+    positionX: 4
   };
 
   componentDidMount() {
@@ -70,13 +73,10 @@ class Main extends Component<{}, MyState> {
     this.setState({ redditData: nextState });
   };
 
-  onSwipeStart = (event: any) => {
-    console.log('Start swiping...', event);
-  }
-
-  onSwipeMove = (position: { x: any; y: any; }, event: any) =>{
-    console.log(`Moved ${position.x} pixels horizontally`, event);
-    console.log(`Moved ${position.y} pixels vertically`, event);
+  onSwipeMove = (event: any) =>{
+    this.setState({
+      positionX: event.absX
+    })
   }
 
   onSwipeEnd = (event: any) => {
@@ -85,14 +85,16 @@ class Main extends Component<{}, MyState> {
 
   render() {
     const listOfPosts = this.state.redditData.map((posts, i) => (
-      <Swipe
-        allowMouseEvents
-        onSwipeStart={this.onSwipeStart}
-        onSwipeMove={this.onSwipeMove}
-        onSwipeEnd={this.onSwipeEnd}
+      <Swipeable
+        style={{
+          borderLeft: `${this.state.positionX}px solid red`
+        }}
+        trackMouse
+        onSwiping={this.onSwipeMove}
+        onSwiped={this.onSwipeEnd}
         key={i}>
         <ListPosts posts={posts} />
-      </Swipe>
+      </Swipeable>
     ));
 
     return (
