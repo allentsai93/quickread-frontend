@@ -28,11 +28,13 @@ type RedditPost = {
 type MyState = {
   redditData: RedditPost[][];
   loaded: boolean;
+  showSelection: boolean;
 };
 class Main extends Component<{}, MyState> {
   state: MyState = {
     redditData: [],
-    loaded: false
+    loaded: false,
+    showSelection: false
   };
 
   componentDidMount() {
@@ -44,8 +46,23 @@ class Main extends Component<{}, MyState> {
     });
   }
 
-  addPostsHandler = () => {
-    console.log('hit');
+  addPostsHandler = (ev: string) => {
+    API.getData("http://localhost:3001/news/parse").then(data => {
+      this.setState(prevState => ({
+        redditData: [...prevState.redditData, data],
+        showSelection: false
+      }));
+    });
+  }
+
+  showSelectionHandler = () => {
+    this.setState(prevState => ({showSelection: !prevState.showSelection}));
+  }
+
+  removeListPostsHandler = () => {
+    const nextState = [...this.state.redditData];
+    nextState.pop();
+    this.setState({redditData: nextState});
   }
 
   render() {
@@ -100,13 +117,21 @@ class Main extends Component<{}, MyState> {
               </div>
               <div className={styles.listControlContainer}>
                 <div className={styles.buttonContainer}>
-                  <Button src={subtract} event={this.addPostsHandler}/>
+                  <Button src={subtract} event={this.removeListPostsHandler}/>
                 </div>
                 <div className={styles.listContainer}>
                   {listOfPosts}
+                  {this.state.showSelection ? 
+                    <ul>
+                      <li onClick={() => this.addPostsHandler('test')}>Option 1</li>
+                      <li onClick={() => this.addPostsHandler('test')}>Option 2</li>
+                      <li onClick={() => this.addPostsHandler('test')}>Option 3</li>
+                      <li onClick={() => this.addPostsHandler('test')}>Option 4</li>
+                    </ul> 
+                  : null}
                 </div>
                 <div className={styles.buttonContainer}>
-                  <Button src={add} event={this.addPostsHandler}/>
+                  <Button src={add} event={this.showSelectionHandler}/>
                 </div>
               </div>
             </div>
