@@ -7,6 +7,7 @@ import add from "../assets/sharp-add_circle-24px.svg";
 import Button from "../components/Button";
 import spinner from "../assets/spinner.svg";
 import ListPosts from "./ListPosts";
+let Swipe = require('react-easy-swipe').default;
 
 type RedditPost = {
   data: {
@@ -69,9 +70,29 @@ class Main extends Component<{}, MyState> {
     this.setState({ redditData: nextState });
   };
 
+  onSwipeStart = (event: any) => {
+    console.log('Start swiping...', event);
+  }
+
+  onSwipeMove = (position: { x: any; y: any; }, event: any) =>{
+    console.log(`Moved ${position.x} pixels horizontally`, event);
+    console.log(`Moved ${position.y} pixels vertically`, event);
+  }
+
+  onSwipeEnd = (event: any) => {
+    console.log('End swiping...', event);
+  }
+
   render() {
     const listOfPosts = this.state.redditData.map((posts, i) => (
-      <ListPosts posts={posts} key={i} />
+      <Swipe
+        allowMouseEvents
+        onSwipeStart={this.onSwipeStart}
+        onSwipeMove={this.onSwipeMove}
+        onSwipeEnd={this.onSwipeEnd}
+        key={i}>
+        <ListPosts posts={posts} />
+      </Swipe>
     ));
 
     return (
