@@ -29,24 +29,32 @@ type RedditPost = {
 
 type MyState = {
   redditData: RedditPost[][];
+  headlinePosts: RedditPost[];
   loaded: boolean;
   showSelection: boolean;
   showSpinner: boolean;
-  positionX: number;
+  positionX0: any;
+  positionX1: any;
+  positionX2: any;
+  [key: string]: any;
 };
 class Main extends Component<{}, MyState> {
   state: MyState = {
     redditData: [],
+    headlinePosts: [],
     loaded: false,
     showSelection: false,
     showSpinner: false,
-    positionX: 4
+    positionX0: 10,
+    positionX1: 10,
+    positionX2: 10
   };
 
   componentDidMount() {
     API.getData("http://localhost:3001/news/parse").then(data => {
       this.setState(prevState => ({
         redditData: [...prevState.redditData, data],
+        headlinePosts: data.slice(0, 3),
         loaded: true
       }));
     });
@@ -67,35 +75,46 @@ class Main extends Component<{}, MyState> {
     this.setState(prevState => ({ showSelection: !prevState.showSelection }));
   };
 
-  removeListPostsHandler = () => {
-    const nextState = [...this.state.redditData];
-    nextState.pop();
-    this.setState({ redditData: nextState });
-  };
-
-  onSwipeMove = (event: any) =>{
-    this.setState({
-      positionX: event.absX
-    })
+  onSwipeMove = (event: any, pos: string) => {
+    if(event.absX >= 10 && event.absX <= 150 && event.dir === 'Right') {
+      this.setState({
+        [pos]: event.absX
+      })
+    }
   }
 
-  onSwipeEnd = (event: any) => {
-    console.log('End swiping...', event);
+  onSwipeEnd = (pos: string, index: number) => {
+    if(this.state[pos] >= 100) {
+      let nextState = [...this.state.redditData];
+      nextState.splice(index, 1);
+      this.setState({
+        [pos]: 10,
+        redditData: nextState
+      });
+    } else {
+      this.setState({
+        [pos]: 10
+      });
+    }
   }
 
   render() {
-    const listOfPosts = this.state.redditData.map((posts, i) => (
+    const listOfPosts = this.state.redditData.map((posts, i) => {
+      const pos = `positionX${i}`;
+      return (
       <Swipeable
         style={{
-          borderLeft: `${this.state.positionX}px solid red`
+          borderLeft: `${this.state[pos]}px solid #630e0e`,
+          margin: '10px',
+          borderRadius: '10px'
         }}
         trackMouse
-        onSwiping={this.onSwipeMove}
-        onSwiped={this.onSwipeEnd}
+        onSwiping={(e: any) => { this.onSwipeMove(e, pos); }}
+        onSwiped={() => { this.onSwipeEnd(pos, i); }}
         key={i}>
         <ListPosts posts={posts} />
       </Swipeable>
-    ));
+    )});
 
     return (
       <>
@@ -104,7 +123,7 @@ class Main extends Component<{}, MyState> {
             <div className={styles.container}>
               <div className={styles.headlineCarousel}>
                 <div className={styles.headlinesContainer}>
-                  {this.state.redditData[0]!.slice(0, 1).map((post: any, i) => (
+                  {this.state.headlinePosts!.slice(0, 1).map((post: any) => (
                     <div key={post.data.id} className={styles.headline1}>
                       <Post
                         title={post.data.title}
@@ -121,8 +140,8 @@ class Main extends Component<{}, MyState> {
                     </div>
                   ))}
                   <div className={styles.subHeadlineContainer}>
-                    {this.state.redditData[0]!.slice(1, 3).map(
-                      (post: any, i) => (
+                    {this.state.headlinePosts!.slice(1, 3).map(
+                      (post: any) => (
                         <div key={post.data.id}>
                           <Post
                             title={post.data.title}
@@ -143,11 +162,6 @@ class Main extends Component<{}, MyState> {
                 </div>
               </div>
               <div className={styles.listControlContainer}>
-                {this.state.redditData.length > 1 ? 
-                <div className={styles.buttonContainer}>
-                  <Button src={subtract} event={this.removeListPostsHandler} />
-                </div>
-                : null }
                 <div className={styles.listContainer}>
                   {listOfPosts}
                   {this.state.showSelection ? (

@@ -7,8 +7,10 @@
     min-width: 320px;
     border: 1px solid #fff7f7;
     border-radius: 10px;
-    margin: 10px;
+    border-left: none;
     position: relative;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .subreddit {
