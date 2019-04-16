@@ -67,9 +67,9 @@
 
 .listControlContainer {
     display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: stretch;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-flow: column wrap;
     width: auto;
     max-width: 100%;
     margin-top: 30px;
@@ -153,4 +153,31 @@
     .headline1 {
         min-width: 300px;
     }
+}
+
+.Controls {
+    display: flex;
+    flex-flow: row wrap;
+    flex: 100%;
+    width: 100%;
+    align-items: center;
+}
+
+.Controls ul {
+    display: flex;
+    flex-flow: row wrap;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+}
+
+.Controls .activeList {
+    min-width: 200px;
+}
+
+.activeList li {
+    font-size: 0.6em;
+    text-transform: uppercase;
+    margin: 10px;
 }

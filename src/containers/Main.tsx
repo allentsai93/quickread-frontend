@@ -62,7 +62,7 @@ class Main extends Component<{}, MyState> {
 
   addPostsHandler = (ev: string) => {
     this.setState({ showSpinner: true, showSelection: false }, () => {
-      API.getData("http://localhost:3001/news/parse").then(data => {
+      API.getData(`http://localhost:3001/${ev}/parse`).then(data => {
         this.setState(prevState => ({
           redditData: [...prevState.redditData, data],
           showSpinner: false
@@ -106,7 +106,9 @@ class Main extends Component<{}, MyState> {
         style={{
           borderLeft: `${this.state[pos]}px solid #630e0e`,
           margin: '10px',
-          borderRadius: '10px'
+          borderRadius: '10px',
+          flex: '3',
+          width: 'auto'
         }}
         trackMouse
         onSwiping={(e: any) => { this.onSwipeMove(e, pos); }}
@@ -162,32 +164,32 @@ class Main extends Component<{}, MyState> {
                 </div>
               </div>
               <div className={styles.listControlContainer}>
-                <div className={styles.listContainer}>
-                  {listOfPosts}
+              <div className={styles.Controls}>
+                  <Button src={add} event={this.showSelectionHandler} />
                   {this.state.showSelection ? (
-                    <ul>
-                      <li onClick={() => this.addPostsHandler("test")}>
+                    <ul className={styles.activeList}>
+                      <li onClick={() => this.addPostsHandler("inthenews")}>
                         Option 1
                       </li>
-                      <li onClick={() => this.addPostsHandler("test")}>
+                      <li onClick={() => this.addPostsHandler("anythinggoesnews")}>
                         Option 2
                       </li>
-                      <li onClick={() => this.addPostsHandler("test")}>
+                      <li onClick={() => this.addPostsHandler("truereddit")}>
                         Option 3
                       </li>
-                      <li onClick={() => this.addPostsHandler("test")}>
+                      <li onClick={() => this.addPostsHandler("redditdotcom")}>
                         Option 4
                       </li>
                     </ul>
-                  ) : null}
+                  ) : <ul></ul>}
+                </div>
+                <div className={styles.listContainer}>
+                  {listOfPosts}
                   {this.state.showSpinner ? (
                     <div className={styles.loadingContainerMore}>
                       <img src={spinner} />
                     </div>
                   ) : null}
-                </div>
-                <div className={styles.buttonContainer}>
-                  <Button src={add} event={this.showSelectionHandler} />
                 </div>
               </div>
             </div>

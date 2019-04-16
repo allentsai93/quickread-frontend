@@ -6,7 +6,7 @@ import Post from "./Post";
 const ListPosts = ({posts} : any) => {
     return (
         <ul className={styles.ul}>
-        <h2 className={styles.subreddit}>{posts[0].data.subreddit}</h2>
+        {/* <h2 className={styles.subreddit}>{posts[0].data.subreddit}</h2> */}
         {posts.map((post: any) => (
           <li className={styles.li} key={post.data.id}>
             <Post
