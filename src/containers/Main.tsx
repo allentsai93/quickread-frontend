@@ -10,7 +10,7 @@ import ListPosts from "./ListPosts";
 declare const require:(moduleId:string) => any;
 const { Swipeable } = require('react-swipeable');
 
-type RedditPost = {
+type NewsPost = {
   data: {
     id: string;
     title: string;
@@ -28,8 +28,8 @@ type RedditPost = {
 };
 
 type MyState = {
-  redditData: RedditPost[][];
-  headlinePosts: RedditPost[];
+  newsData: NewsPost[][];
+  headlinePosts: NewsPost[];
   loaded: boolean;
   showSelection: boolean;
   showSpinner: boolean;
@@ -40,7 +40,7 @@ type MyState = {
 };
 class Main extends Component<{}, MyState> {
   state: MyState = {
-    redditData: [],
+    newsData: [],
     headlinePosts: [],
     loaded: false,
     showSelection: false,
@@ -53,7 +53,7 @@ class Main extends Component<{}, MyState> {
   componentDidMount() {
     API.getData("http://localhost:3001/news/parse").then(data => {
       this.setState(prevState => ({
-        redditData: [...prevState.redditData, data],
+        newsData: [...prevState.newsData, data],
         headlinePosts: data.slice(0, 3),
         loaded: true
       }));
@@ -64,7 +64,7 @@ class Main extends Component<{}, MyState> {
     this.setState({ showSpinner: true, showSelection: false }, () => {
       API.getData(`http://localhost:3001/${ev}/parse`).then(data => {
         this.setState(prevState => ({
-          redditData: [...prevState.redditData, data],
+          newsData: [...prevState.newsData, data],
           showSpinner: false
         }));
       });
@@ -99,7 +99,7 @@ class Main extends Component<{}, MyState> {
   }
 
   render() {
-    const listOfPosts = this.state.redditData.map((posts, i) => {
+    const listOfPosts = this.state.newsData.map((posts, i) => {
       const pos = `positionX${i}`;
       return (
       <Swipeable
