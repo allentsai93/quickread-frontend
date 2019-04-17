@@ -85,11 +85,11 @@ class Main extends Component<{}, MyState> {
 
   onSwipeEnd = (pos: string, index: number) => {
     if(this.state[pos] >= 100) {
-      let nextState = [...this.state.redditData];
+      let nextState = [...this.state.newsData];
       nextState.splice(index, 1);
       this.setState({
         [pos]: 10,
-        redditData: nextState
+        newsData: nextState
       });
     } else {
       this.setState({
@@ -168,7 +168,7 @@ class Main extends Component<{}, MyState> {
                   <Button src={add} event={this.showSelectionHandler} />
                   {this.state.showSelection ? (
                     <ul className={styles.activeList}>
-                      <li onClick={() => this.addPostsHandler("inthenews")}>
+                      <li onClick={() => this.addPostsHandler("news")}>
                         Option 1
                       </li>
                       <li onClick={() => this.addPostsHandler("anythinggoesnews")}>
