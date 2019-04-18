@@ -34,9 +34,9 @@ type MyState = {
   loaded: boolean;
   showSelection: boolean;
   showSpinner: boolean;
-  positionX0: any;
-  positionX1: any;
-  positionX2: any;
+  positionX0: number;
+  positionX1: number;
+  positionX2: number;
   [key: string]: any;
 };
 class Main extends Component<{}, MyState> {
