@@ -7,18 +7,15 @@ const ListPosts = ({posts} : any) => {
     return (
         <ul className={styles.ul}>
         {/* <h2 className={styles.subreddit}>{posts[0].data.subreddit}</h2> */}
-        {posts.map((post: any) => (
-          <li className={styles.li} key={post.data.id}>
+        {posts.map((post: any, i: number) => (
+          <li className={styles.li} key={i}>
             <Post
-              title={post.data.title}
-              subreddit={post.data.subreddit}
-              permalink={post.data.permalink}
-              url={post.data.url}
-              author={post.data.author}
-              created={post.data.created}
-              domain={post.data.domain}
-              ups={post.data.ups}
-              image={post.data.parsed.lead_image_url}
+              title={post.title}
+              from={post.source.name}
+              url={post.url}
+              author={post.source.name}
+              created={post.publishedAt}
+              image={post.urlToImage}
               headline={false}
             />
           </li>

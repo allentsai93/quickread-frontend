@@ -5,11 +5,10 @@ import spinner from '../assets/spinner.svg';
 
 type TParams = {
     url: string;
-    permalink: string;
     domain: string;
 }
 
-const Content = ({url, permalink, domain} : TParams) => {
+const Content = ({url, domain} : TParams) => {
     const [data, setData] = React.useState<null | {content: string, title: string, author: any, date_published: string, lead_image_url: string, originalWordCount: number, condensedWordCount: number, condensedContent: string, percentCondensed: string}>(null);
 
     React.useEffect(() => {
@@ -45,8 +44,6 @@ const Content = ({url, permalink, domain} : TParams) => {
                             <span className={styles.data}>
                                 <span className={styles.datatext}>{`Condensed word count: ${data.condensedWordCount}, Original word count: ${data.originalWordCount}`}</span>
                                 <span className={styles.datatext}>{`Article Link: `}<a href={url}>{url}</a></span>
-                                <span className={styles.datatext}>{`Reddit Link: `}<a href={permalink}>{permalink}</a></span>
-                                <span className={styles.datatext}>{`Scraped from: `}<a href={url}>{url}</a></span>
                             </span>
                         </div>
                     : <div className={styles.contentContainer}>

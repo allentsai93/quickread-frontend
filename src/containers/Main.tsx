@@ -10,20 +10,21 @@ import ListPosts from "./ListPosts";
 declare const require:(moduleId:string) => any;
 const { Swipeable } = require('react-swipeable');
 
+type Source = {
+  id: string;
+  name: string;
+}
+
 type NewsPost = {
   data: {
-    id: string;
+    source: Source;
     title: string;
-    subreddit: string;
-    permalink: string;
     url: string;
     author: string;
-    created: number;
-    domain: string;
-    ups: number;
-    parsed: {
-      lead_image_url: string;
-    };
+    publishedAt: string;
+    urlToImage: string;
+    description: string;
+    content: string;
   };
 };
 
@@ -51,10 +52,11 @@ class Main extends Component<{}, MyState> {
   };
 
   componentDidMount() {
-    API.getData("http://localhost:3001/news/parse").then(data => {
+    API.getData("http://localhost:3001/topheadlines/").then(data => {
+      console.log(data);
       this.setState(prevState => ({
-        newsData: [...prevState.newsData, data],
-        headlinePosts: data.slice(0, 3),
+        newsData: [...prevState.newsData, data.articles],
+        headlinePosts: data.articles.slice(0, 3),
         loaded: true
       }));
     });
@@ -125,36 +127,30 @@ class Main extends Component<{}, MyState> {
             <div className={styles.container}>
               <div className={styles.headlineCarousel}>
                 <div className={styles.headlinesContainer}>
-                  {this.state.headlinePosts!.slice(0, 1).map((post: any) => (
-                    <div key={post.data.id} className={styles.headline1}>
+                  {this.state.headlinePosts!.slice(0, 1).map((post: any, i: number) => (
+                    <div key={i} className={styles.headline1}>
                       <Post
-                        title={post.data.title}
-                        subreddit={post.data.subreddit}
-                        permalink={post.data.permalink}
-                        url={post.data.url}
-                        author={post.data.author}
-                        created={post.data.created}
-                        domain={post.data.domain}
-                        ups={post.data.ups}
-                        image={post.data.parsed.lead_image_url}
+                        title={post.title}
+                        from={post.source.name}
+                        url={post.url}
+                        author={post.source.name}
+                        created={post.publishedAt}
+                        image={post.urlToImage}
                         headline
                       />
                     </div>
                   ))}
                   <div className={styles.subHeadlineContainer}>
                     {this.state.headlinePosts!.slice(1, 3).map(
-                      (post: any) => (
-                        <div key={post.data.id}>
+                      (post: any, i: number) => (
+                        <div key={i}>
                           <Post
-                            title={post.data.title}
-                            subreddit={post.data.subreddit}
-                            permalink={post.data.permalink}
-                            url={post.data.url}
-                            author={post.data.author}
-                            created={post.data.created}
-                            domain={post.data.domain}
-                            ups={post.data.ups}
-                            image={post.data.parsed.lead_image_url}
+                            title={post.title}
+                            from={post.source.name}
+                            url={post.url}
+                            author={post.source.name}
+                            created={post.publishedAt}
+                            image={post.urlToImage}
                             headline
                           />
                         </div>
