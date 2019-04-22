@@ -7,6 +7,7 @@ import add from "../assets/sharp-add_circle-24px.svg";
 import Button from "../components/Button";
 import spinner from "../assets/spinner.svg";
 import ListPosts from "./ListPosts";
+import { RouteComponentProps } from "react-router";
 declare const require:(moduleId:string) => any;
 const { Swipeable } = require('react-swipeable');
 
@@ -39,7 +40,8 @@ type MyState = {
   positionX2: number;
   [key: string]: any;
 };
-class Main extends Component<{}, MyState> {
+
+class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
   state: MyState = {
     newsData: [],
     headlinePosts: [],
@@ -52,8 +54,8 @@ class Main extends Component<{}, MyState> {
   };
 
   componentDidMount() {
-    API.getData("http://localhost:3001/topheadlines/").then(data => {
-      console.log(data);
+    const url = this.props.match.params.source ? `sources/${this.props.match.params.source}` : 'topheadlines'
+    API.getData(`http://localhost:3001/${url}`).then(data => {
       this.setState(prevState => ({
         newsData: [...prevState.newsData, data.articles],
         headlinePosts: data.articles.slice(0, 3),

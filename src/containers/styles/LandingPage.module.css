@@ -1,0 +1,30 @@
+.container {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.container > h1 {
+    text-transform: lowercase;
+}
+
+input[type="text"] {
+    background-color: rgba(0,0,0,0);
+    border: none;
+    width: 400px;
+    color: white;
+    text-align: center;
+    font-weight: 100;
+    padding-bottom: 15px;
+    font-size: 1.5em;
+    letter-spacing: 3px;
+    border-bottom: 3px solid white;
+}
+
+input[type="text"]:focus {
+    outline: none;
+}

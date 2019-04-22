@@ -1,20 +1,24 @@
-import React, { Component } from 'react';
-import { Route, Switch } from "react-router-dom";
-import Main from './Main';
-import Direct from './Direct';
-import Header from './Header';
-import styles from './styles/Global.module.css';
+import React, { Component } from "react";
+import { Route, Switch, RouteComponentProps } from "react-router-dom";
+import Main from "./Main";
+import Direct from "./Direct";
+import Header from "./Header";
+import styles from "./styles/Global.module.css";
+import LandingPage from "./LandingPage";
 
 class App extends Component {
   render() {
     return (
-      <div className={styles.div}>
-        <Header />
-        <Switch>
-            <Route exact path='/' component={Main} />
+      <Switch>
+        <Route exact path="/" component={LandingPage} />
+        <>
+          <div className={styles.div}>
+            <Header />
+            <Route exact path="/news/:source" component={Main} />
             <Route path="/:url" component={Direct} />
-        </Switch>
-      </div>
+          </div>
+        </>
+      </Switch>
     );
   }
 }
