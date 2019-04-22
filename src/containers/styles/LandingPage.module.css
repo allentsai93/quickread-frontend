@@ -15,6 +15,9 @@ body {
 .container > h1 {
     text-transform: lowercase;
 }
+.inputContainer {
+    border-bottom: 3px solid white;
+}
 
 input[type="text"] {
     background-color: rgba(0,0,0,0);
@@ -26,7 +29,6 @@ input[type="text"] {
     padding-bottom: 15px;
     font-size: 1.5em;
     letter-spacing: 3px;
-    border-bottom: 3px solid white;
     max-width: 62vw;
 }
 
@@ -68,6 +70,7 @@ input[type="text"]:focus {
     height: 70px;
     overflow: hidden;
     display: flex;
+    width: auto;
     flex-flow: row wrap;
 }
 
@@ -77,11 +80,36 @@ form button {
     background: none;
     border: none;
     color: white;
-    border-bottom: 3px solid white;
 }
 
 button img {
     width: 50px;
     display: block;
     margin: 0 auto;
+}
+
+.sourcesContainer {
+    min-height: 0;
+    width: 100%;
+    background-color: #ffffff;
+    transition: min-height 100ms linear;
+}
+
+.sourcesContainerActive {
+    min-height: 500px;
+    box-shadow: inset 0px 50px 20px -30px #CCC, inset 0px -50px 20px -30px #CCC;
+}
+
+.sourcesBtn {
+    min-width: auto;
+    transition: min-width 100ms linear;
+    border: 3px solid white;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.sourcesBtnActive {
+    min-width: 98vw;
+    border: none;
 }

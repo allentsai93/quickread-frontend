@@ -49,7 +49,7 @@ const LandingPage = () => {
                             enterActive: styles["enterActive"],
                             exitActive: styles["exitActive"]
                         }}
-                        timeout={400}
+                        timeout={1000}
                         mountOnEnter
                         unmountOnExit
                         appear
@@ -59,8 +59,8 @@ const LandingPage = () => {
                 </form>
             </div>
             <p>or</p>
-            <p>Choose a News Source</p>
-            <div className={styles.sourcesContainer}>
+            <span className={!showSources ? styles.sourcesBtn : [styles.sourcesBtn, styles.sourcesBtnActive].join(' ')} onClick={() => setShowSources(!showSources)}>Choose a News Source</span>
+            <div className={!showSources ? styles.sourcesContainer : [styles.sourcesContainer, styles.sourcesContainerActive].join(' ')}>
 
             </div>
         </div>
