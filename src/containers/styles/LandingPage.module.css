@@ -8,6 +8,10 @@
     color: white;
 }
 
+body {
+    background-color: #171729;
+}
+
 .container > h1 {
     text-transform: lowercase;
 }
@@ -23,8 +27,61 @@ input[type="text"] {
     font-size: 1.5em;
     letter-spacing: 3px;
     border-bottom: 3px solid white;
+    max-width: 62vw;
 }
+
+input[type="text"]::-webkit-input-placeholder  {
+    -webkit-transition: opacity 0.3s linear; 
+  }
+  
+  input[type="text"]:focus::-webkit-input-placeholder  {
+    opacity: 0;
+  }
 
 input[type="text"]:focus {
     outline: none;
+}
+
+.exit {
+    width: 100px;
+}
+
+.exitActive {
+    width: 0;
+    overflow: hidden;
+    height: 70px !important;
+    transition: width 400ms ease-in;
+}
+
+.enter {
+    width: 0;
+}
+
+.enterActive {
+    width: 100px;
+    height: 70px !important;
+    overflow: hidden;
+    transition: width 400ms ease-in;
+}
+
+.inputContainer form {
+    height: 70px;
+    overflow: hidden;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+form button {
+    height: 70px !important;
+    width: 100px;
+    background: none;
+    border: none;
+    color: white;
+    border-bottom: 3px solid white;
+}
+
+button img {
+    width: 50px;
+    display: block;
+    margin: 0 auto;
 }
