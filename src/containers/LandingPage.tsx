@@ -121,8 +121,8 @@ const LandingPage = () => {
       {selectedCategories ? (
         <form className={styles.filterForm}>
           {selectedCategories.map((cat, i) => (
-            <fieldset key={i}>
-              <legend>{cat}</legend>
+            <div key={i} className={[styles.catContainer, styles[cat]].join(' ')}>
+              <p>{cat}</p>
               {sources!
                 .filter(source => source.category === cat)
                 .map((source, i) => {
@@ -139,7 +139,7 @@ const LandingPage = () => {
                     </div>
                   );
                 })}
-            </fieldset>
+            </div>
           ))}
         </form>
       ) : null}

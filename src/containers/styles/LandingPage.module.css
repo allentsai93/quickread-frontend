@@ -3,7 +3,7 @@
     width: 100%;
     display: flex;
     flex-flow: column wrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     color: white;
 }
@@ -116,11 +116,22 @@ button img {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     max-width: 1300px;
     width: 99%;
+    margin-top: 20px;
 }
-fieldset {
+.catContainer {
     max-height: 250px;
     height: 250px;
     overflow-y: overlay;
+    background-color: white;
+    margin: 1px;
+    border-top: 10px inset #1b95b1;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 0;
+}
+
+.catContainer > p {
+    margin: 0;
 }
 .filterForm * {
     font-size: 0.8em;
@@ -141,4 +152,32 @@ fieldset {
     border: none;
     margin: 1px;
     cursor: pointer;
+}
+
+.business {
+    
+}
+
+.entertainment {
+
+}
+
+.general {
+
+}
+
+.health {
+
+}
+
+.science {
+
+}
+
+.sports {
+
+}
+
+.technology {
+
 }
