@@ -89,15 +89,10 @@ button img {
 }
 
 .sourcesContainer {
-    min-height: 0;
-    width: 100%;
-    background-color: #ffffff;
-    transition: min-height 100ms linear;
-}
-
-.sourcesContainerActive {
-    min-height: 500px;
-    box-shadow: inset 0px 50px 20px -30px #CCC, inset 0px -50px 20px -30px #CCC;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .sourcesBtn {
@@ -109,7 +104,33 @@ button img {
     cursor: pointer;
 }
 
-.sourcesBtnActive {
-    min-width: 98vw;
+.filterForm {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: black;
+}
+
+.filterForm * {
+    font-size: 0.8em;
+}
+
+.checkboxInputDiv {
+
+}
+
+.checkbox {
+
+}
+
+.categoryButton {
+    background: white;
+    border-radius: 0;
+    padding: 30px;
     border: none;
+    margin: 1px;
+    flex: 33%;
+    max-width: 250px;
+    cursor: pointer;
 }
