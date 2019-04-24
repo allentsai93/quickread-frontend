@@ -89,10 +89,12 @@ button img {
 }
 
 .sourcesContainer {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-gap: 1px;
+    max-width: 1300px;
+    width: 99%;
+    margin-top: 50px;
 }
 
 .sourcesBtn {
@@ -105,13 +107,21 @@ button img {
 }
 
 .filterForm {
-    display: flex;
+    /* display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: flex-start; */
     color: black;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    max-width: 1300px;
+    width: 99%;
 }
-
+fieldset {
+    max-height: 250px;
+    height: 250px;
+    overflow-y: overlay;
+}
 .filterForm * {
     font-size: 0.8em;
 }
@@ -130,7 +140,5 @@ button img {
     padding: 30px;
     border: none;
     margin: 1px;
-    flex: 33%;
-    max-width: 250px;
     cursor: pointer;
 }

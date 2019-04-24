@@ -105,8 +105,6 @@ const LandingPage = () => {
           </CSSTransition>
         </form>
       </div>
-      <p>or</p>
-      <span className={styles.sourcesBtn}>Choose Categories</span>
       <div className={styles.sourcesContainer}>
         {categories.map((cat, i) => {
           return (
