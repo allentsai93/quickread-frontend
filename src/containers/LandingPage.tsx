@@ -15,9 +15,12 @@ type Source = {
 
 const LandingPage = () => {
   const [sources, setSources] = React.useState<null | Source[]>(null);
-  const [showSources, setShowSources] = React.useState(false);
+  const [showSuggestions, setShowSuggestions] = React.useState(false);
   const [showSubmit, setShowSubmit] = React.useState(false);
   const [searchTerm, setSearchTerm] = React.useState("");
+  const [searchSource, setSearchSource] = React.useState('');
+  const [checkboxInputs, setCheckboxInputs] = React.useState<string[]>([]);
+  const [autoSuggest, setAutoSuggest] = React.useState<null | Source[]>(null);
   const categories = [
     "business",
     "entertainment",
@@ -56,8 +59,27 @@ const LandingPage = () => {
     setSearchTerm(term);
     if (term.length >= 3) {
       setShowSubmit(true);
+      setAutoSuggestions(term);
     } else {
       setShowSubmit(false);
+      setAutoSuggestions("");
+    }
+  };
+
+  const setAutoSuggestions = (input: string) => {
+    if (input !== "") {
+      const filteredSources = sources!.filter(source =>
+        source.name.toLowerCase().includes(input)
+      );
+      if(filteredSources.length) {
+          setAutoSuggest(filteredSources);
+          setShowSuggestions(true);
+      } else {
+          setShowSuggestions(false);
+      }
+    } else {
+      setAutoSuggest([]);
+      setShowSuggestions(false);
     }
   };
 
@@ -75,6 +97,16 @@ const LandingPage = () => {
     }
   };
 
+  const handleCheckbox = (id: string) => {
+      if(checkboxInputs!.indexOf(id) !== -1) {
+          const newCheckboxInputs = [...checkboxInputs];
+          newCheckboxInputs.splice(newCheckboxInputs.indexOf(id), 1);
+          setCheckboxInputs(newCheckboxInputs);
+      } else {
+          setCheckboxInputs([...checkboxInputs, id]);
+      }
+  }
+
   return (
     <div className={styles.container}>
       <h1>LandingPage</h1>
@@ -83,7 +115,7 @@ const LandingPage = () => {
           <input
             type={"text"}
             value={searchTerm}
-            placeholder={"Search for a topic..."}
+            placeholder={"Search for a topic or source"}
             onChange={e => searchHandler(e.target.value)}
           />
           <CSSTransition
@@ -104,7 +136,29 @@ const LandingPage = () => {
             </button>
           </CSSTransition>
         </form>
+        <CSSTransition
+          in={showSuggestions}
+          classNames={{
+            exit: styles["exitSuggestions"],
+            enter: styles["enterSuggestions"],
+            enterActive: styles["enterActiveSuggestions"],
+            exitActive: styles["exitActiveSuggestions"]
+          }}
+          timeout={500}
+          mountOnEnter
+          unmountOnExit
+          appear
+        >
+          <div className={styles.suggestionsBox}>
+            {autoSuggest
+              ? autoSuggest!.map((source, i) => (
+                  <span key={i} onClick={() => setSearchSource(source.id)}>{source.name} <span className={styles.sourceSpan}>News Source</span></span>
+                ))
+              : null}
+          </div>
+        </CSSTransition>
       </div>
+
       <div className={styles.sourcesContainer}>
         {categories.map((cat, i) => {
           return (
@@ -121,24 +175,30 @@ const LandingPage = () => {
       {selectedCategories ? (
         <form className={styles.filterForm}>
           {selectedCategories.map((cat, i) => (
-            <div key={i} className={[styles.catContainer, styles[cat]].join(' ')}>
+            <div
+              key={i}
+              className={[styles.catContainer, styles[cat]].join(" ")}
+            >
               <p>{cat}</p>
+              <div className={styles.sourceListContainer}>
               {sources!
                 .filter(source => source.category === cat)
                 .map((source, i) => {
                   return (
-                    <div key={i} className={styles.checkboxInputDiv}>
+                    <div key={i} className={checkboxInputs && checkboxInputs.includes(source.id) ? [styles.checkboxInputDiv, styles.checkboxInputActive].join(' ') : styles.checkboxInputDiv}>
+                      <label htmlFor={source.id}>{source.name}</label>
                       <span className={styles.checkbox}>
                         <input
                           type={"checkbox"}
                           value={source.id}
                           id={source.id}
+                          onChange={() => handleCheckbox(source.id)}
                         />
                       </span>
-                      <label htmlFor={source.id}>{source.name}</label>
                     </div>
                   );
                 })}
+                </div>
             </div>
           ))}
         </form>
