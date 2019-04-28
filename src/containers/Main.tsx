@@ -8,6 +8,7 @@ import Button from "../components/Button";
 import spinner from "../assets/spinner.svg";
 import ListPosts from "./ListPosts";
 import { RouteComponentProps } from "react-router";
+import Header from "../components/Header";
 declare const require:(moduleId:string) => any;
 const { Swipeable } = require('react-swipeable');
 
@@ -124,6 +125,7 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
 
     return (
       <>
+      <Header />
         {this.state.loaded ? (
           <>
             <div className={styles.container}>

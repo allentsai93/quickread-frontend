@@ -1,0 +1,36 @@
+
+.suggestionsBox {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    background-color: white;
+    display: flex;
+    flex-flow: column nowrap;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-top: 3px;
+    color: black;
+    border-bottom: 3px solid;
+    border-bottom-color: #3943c1;
+    cursor: pointer;
+    height: 200px;
+}
+
+.suggestionsBox > span {
+    flex: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #e8e8e8;
+    letter-spacing: 1px;
+    font-size: 0.5em;
+    transition: background-color 100ms ease-in;
+}
+
+.suggestionsBox > span:hover {
+    background-color: #d5dff5;
+}
+
+.sourceSpan {
+    float: right;
+    font-size: 0.7em;
+    font-weight: 100;
+}
