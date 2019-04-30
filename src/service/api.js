@@ -8,11 +8,11 @@ export default {
         }
     },
     buildUrlString: (ids = []) => {
-        return ids.map(id => {
-
+        return ids.map((id, i) => {
+            return i !== 0 ? `&s=${id}` : `s=${id}`
         });
     },
     getStateFromUrl: (ids = []) => {
-        
+
     }
 }
