@@ -55,6 +55,7 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
   };
 
   componentDidMount() {
+    console.log(this.props.match);
     const url = this.props.match.params.source ? `sources/${this.props.match.params.source}` : 'topheadlines'
     API.getData(`http://localhost:3001/${url}`).then(data => {
       this.setState(prevState => ({

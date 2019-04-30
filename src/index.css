@@ -65,4 +65,17 @@ p {
   justify-content: center;
   align-items: center;
   margin: 0 5px;
+  transform: scale(1);
+  transition: transform 200ms ease-in;
+}
+
+.carousel .slider-wrapper.axis-horizontal .slider .slide.selected {
+  transform: scale(1.05);
+  transition: transform 200ms ease-out;
+  margin: 0 15px !important;
+}
+
+
+.selected > div {
+  margin: 10px !important;
 }

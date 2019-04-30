@@ -32,7 +32,7 @@ const LandingPage = () => {
   const [checkboxInputs, setCheckboxInputs] = React.useState<string[]>([]);
   const [autoSuggest, setAutoSuggest] = React.useState<null | Content[]>(null);
   const [uncategorizedData, setUncategorizedData] = React.useState<null | Content[]>(null);
-  const [carouselIndex, setCarouselIndex] = React.useState(0);
+  const [carouselIndex, setCarouselIndex] = React.useState(1);
   const [formSubmit, showFormSubmit] = React.useState(false);
 
   React.useEffect(() => {
