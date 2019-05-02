@@ -55,8 +55,16 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
   };
 
   componentDidMount() {
-    console.log(this.props.match);
-    const url = this.props.match.params.source ? `sources/${this.props.match.params.source}` : 'topheadlines'
+    let url = this.props.match.params.source ? `sources/${this.props.match.params.source}` : 'topheadlines';
+
+    if(this.props.match.params.source == 'multi') {
+
+      const searchParams = new URLSearchParams(this.props.location.search);
+      const search = searchParams.get('q')!.split(' ').join(',');
+      url = `sources/${search}`;
+
+    }
+    
     API.getData(`http://localhost:3001/${url}`).then(data => {
       this.setState(prevState => ({
         newsData: [...prevState.newsData, data.articles],

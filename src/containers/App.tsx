@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <Switch>
         <Route exact path="/" component={LandingPage} />
-        <Route path="/news/:source" component={Main} />
+        <Route exact path="/news/:source" component={Main} />
         <Route exact path="/:url" component={Direct} />
       </Switch>
     );

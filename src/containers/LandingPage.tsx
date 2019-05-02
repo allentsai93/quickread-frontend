@@ -23,7 +23,7 @@ type Source = {
   content: Content[]
 }
 
-const LandingPage = () => {
+const LandingPage = (props: any) => {
   const [sources, setSources] = React.useState<null | Source[]>(null);
   const [showSuggestions, setShowSuggestions] = React.useState(false);
   const [showSubmit, setShowSubmit] = React.useState(false);
@@ -107,7 +107,10 @@ const LandingPage = () => {
   }
 
   const handleForm = (ev: any) => {
-    console.log(checkboxInputs);
+    const queries = [...checkboxInputs].join('+');
+    const query = `?q=${queries}`;
+    console.log(query);
+    props.history.push(`/news/multi/${query}`)
   }
 
   return (
