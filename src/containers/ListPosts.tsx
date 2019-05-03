@@ -3,10 +3,10 @@ import styles from './styles/ListPosts.module.css';
 import Post from "./Post";
 
 
-const ListPosts = ({posts} : any) => {
+const ListPosts = ({posts, query} : any) => {
     return (
         <ul className={styles.ul}>
-        {/* <h2 className={styles.subreddit}>{posts[0].data.subreddit}</h2> */}
+        <li className={styles.categoryTitle}>{query}</li>
         {posts.map((post: any, i: number) => (
           <li className={styles.li} key={i}>
             <Post

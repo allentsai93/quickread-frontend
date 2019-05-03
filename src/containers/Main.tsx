@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import API from "../service/api";
-import Post from "./Post";
 import styles from "./styles/Main.module.css";
 import subtract from "../assets/sharp-delete_sweep-24px.svg";
 import add from "../assets/sharp-add_circle-24px.svg";
@@ -9,6 +8,7 @@ import spinner from "../assets/spinner.svg";
 import ListPosts from "./ListPosts";
 import { RouteComponentProps } from "react-router";
 import Header from "../components/Header";
+import HeadlinePost from "./HeadlinePost";
 declare const require:(moduleId:string) => any;
 const { Swipeable } = require('react-swipeable');
 
@@ -30,8 +30,14 @@ type NewsPost = {
   };
 };
 
+type NewsSource = {
+  query: string;
+  status: string;
+  articles: NewsPost[];
+}
+
 type MyState = {
-  newsData: NewsPost[][];
+  newsData: NewsSource[];
   headlinePosts: NewsPost[];
   loaded: boolean;
   showSelection: boolean;
@@ -55,20 +61,18 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
   };
 
   componentDidMount() {
-    let url = this.props.match.params.source ? `sources/${this.props.match.params.source}` : 'topheadlines';
+    let url = 'topheadlines';
 
-    if(this.props.match.params.source == 'multi') {
-
+    if(this.props.location.search) {
       const searchParams = new URLSearchParams(this.props.location.search);
       const search = searchParams.get('q')!.split(' ').join(',');
-      url = `sources/${search}`;
-
+      url = `sources/news?q=${search}`;
     }
     
     API.getData(`http://localhost:3001/${url}`).then(data => {
-      this.setState(prevState => ({
-        newsData: [...prevState.newsData, data.articles],
-        headlinePosts: data.articles.slice(0, 3),
+      this.setState(() => ({
+        newsData: data,
+        headlinePosts: data[0].articles.slice(0, 3),
         loaded: true
       }));
     });
@@ -113,7 +117,7 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
   }
 
   render() {
-    const listOfPosts = this.state.newsData.map((posts, i) => {
+    const listOfPosts = this.state.loaded ? this.state.newsData.map((source, i) => {
       const pos = `positionX${i}`;
       return (
       <Swipeable
@@ -128,9 +132,9 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
         onSwiping={(e: any) => { this.onSwipeMove(e, pos); }}
         onSwiped={() => { this.onSwipeEnd(pos, i); }}
         key={i}>
-        <ListPosts posts={posts} />
+        <ListPosts posts={source.articles} query={source.query} />
       </Swipeable>
-    )});
+    )}) : null;
 
     return (
       <>
@@ -138,40 +142,7 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
         {this.state.loaded ? (
           <>
             <div className={styles.container}>
-              <div className={styles.headlineCarousel}>
-                <div className={styles.headlinesContainer}>
-                  {this.state.headlinePosts!.slice(0, 1).map((post: any, i: number) => (
-                    <div key={i} className={styles.headline1}>
-                      <Post
-                        title={post.title}
-                        from={post.source.name}
-                        url={post.url}
-                        author={post.source.name}
-                        created={post.publishedAt}
-                        image={post.urlToImage}
-                        headline
-                      />
-                    </div>
-                  ))}
-                  <div className={styles.subHeadlineContainer}>
-                    {this.state.headlinePosts!.slice(1, 3).map(
-                      (post: any, i: number) => (
-                        <div key={i}>
-                          <Post
-                            title={post.title}
-                            from={post.source.name}
-                            url={post.url}
-                            author={post.source.name}
-                            created={post.publishedAt}
-                            image={post.urlToImage}
-                            headline
-                          />
-                        </div>
-                      )
-                    )}
-                  </div>
-                </div>
-              </div>
+              <HeadlinePost posts={this.state.headlinePosts}/>
               <div className={styles.listControlContainer}>
               <div className={styles.Controls}>
                   <Button src={add} event={this.showSelectionHandler} />
