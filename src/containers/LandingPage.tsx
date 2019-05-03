@@ -114,7 +114,7 @@ const LandingPage = (props: any) => {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={[styles.container, 'landing-page'].join(' ')}>
       <div className={styles.landingHeader}>
       <div className={styles.company}>
         <h1>Teeldr</h1>

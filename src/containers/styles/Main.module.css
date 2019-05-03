@@ -38,7 +38,7 @@
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
-    width: 75vmax;
+    width: 100%;
     max-width: 100%;
     flex: 10;
     min-width: 300px;

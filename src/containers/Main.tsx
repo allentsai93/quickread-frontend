@@ -11,6 +11,8 @@ import Header from "../components/Header";
 import HeadlinePost from "./HeadlinePost";
 declare const require:(moduleId:string) => any;
 const { Swipeable } = require('react-swipeable');
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
 
 type Source = {
   id: string;
@@ -66,7 +68,7 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
     if(this.props.location.search) {
       const searchParams = new URLSearchParams(this.props.location.search);
       const search = searchParams.get('q')!.split(' ').join(',');
-      url = `sources/news?q=${search}`;
+      url = `sources/news/noparse?q=${search}`;
     }
     
     API.getData(`http://localhost:3001/${url}`).then(data => {
@@ -129,8 +131,8 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
           width: 'auto'
         }}
         trackMouse
-        onSwiping={(e: any) => { this.onSwipeMove(e, pos); }}
-        onSwiped={() => { this.onSwipeEnd(pos, i); }}
+        // onSwiping={(e: any) => { this.onSwipeMove(e, pos); }}
+        // onSwiped={() => { this.onSwipeEnd(pos, i); }}
         key={i}>
         <ListPosts posts={source.articles} query={source.query} />
       </Swipeable>
@@ -141,7 +143,7 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
       <Header />
         {this.state.loaded ? (
           <>
-            <div className={styles.container}>
+            <div className={[styles.container, 'main-page'].join(' ')}>
               <HeadlinePost posts={this.state.headlinePosts}/>
               <div className={styles.listControlContainer}>
               <div className={styles.Controls}>
@@ -164,12 +166,27 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
                   ) : <ul></ul>}
                 </div>
                 <div className={styles.listContainer}>
-                  {listOfPosts}
-                  {this.state.showSpinner ? (
+                  <Carousel
+                    showThumbs={false}
+                    showStatus={false}
+                    showArrows={false}
+                    showIndicators={false}
+                    centerMode={true}
+                    centerSlidePercentage={50}
+                    swipeScrollTolerance={1}
+                    swipeable
+                    emulateTouch={true}
+                    // className={styles.carousel}
+                    // onClickItem={handleCarousel}
+                    // selectedItem={carouselIndex}
+                  >
+                    {listOfPosts}
+                  </Carousel>
+                  {/* {this.state.showSpinner ? (
                     <div className={styles.loadingContainerMore}>
                       <img src={spinner} />
                     </div>
-                  ) : null}
+                  ) : null} */}
                 </div>
               </div>
             </div>

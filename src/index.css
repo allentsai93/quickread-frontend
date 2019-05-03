@@ -59,7 +59,7 @@ p {
   font-size: 0.7em;
 }
 
-.carousel .slider-wrapper.axis-horizontal .slider .slide {
+.landing-page .carousel .slider-wrapper.axis-horizontal .slider .slide {
   background: none !important;
   display: flex;
   justify-content: center;
@@ -69,7 +69,7 @@ p {
   transition: transform 200ms ease-in;
 }
 
-.carousel .slider-wrapper.axis-horizontal .slider .slide.selected {
+.landing-page .carousel .slider-wrapper.axis-horizontal .slider .slide.selected {
   transform: scale(1.05);
   transition: transform 200ms ease-out;
   margin: 0 15px !important;
@@ -78,4 +78,8 @@ p {
 
 .selected > div {
   margin: 10px !important;
+}
+
+.main-page .carousel .slide {
+  background: none;
 }
