@@ -1,6 +1,8 @@
+const apiUrl = process.env.NODE_ENV === 'production' ? 'http://54.188.14.207:3001/' : 'http://localhost:3001/';
+
 export default {
     getData: (url) => {
-        return fetch(url).then(res => res.json());
+        return fetch(`${apiUrl + url}`).then(res => res.json());
     },
     getUrlId: (id) => {
         switch(id) {

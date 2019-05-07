@@ -71,7 +71,7 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
       url = `sources/news/noparse?q=${search}`;
     }
     
-    API.getData(`http://localhost:3001/${url}`).then(data => {
+    API.getData(`${url}`).then(data => {
       this.setState(() => ({
         newsData: data,
         headlinePosts: data[0].articles.slice(0, 3),
@@ -82,7 +82,7 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
 
   addPostsHandler = (ev: string) => {
     this.setState({ showSpinner: true, showSelection: false }, () => {
-      API.getData(`http://localhost:3001/${ev}/parse`).then(data => {
+      API.getData(`${ev}/parse`).then(data => {
         this.setState(prevState => ({
           newsData: [...prevState.newsData, data],
           showSpinner: false

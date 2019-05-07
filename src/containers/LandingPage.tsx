@@ -48,7 +48,7 @@ const LandingPage = (props: any) => {
   }, [checkboxInputs])
 
   const getSources = () => {
-    API.getData(`http://localhost:3001/sources/categorized`).then(data => {
+    API.getData(`sources/categorized`).then(data => {
       setSources(data);
       const flattenData = [];
       for(let i = 0; i < data.length; i++) {
@@ -109,7 +109,6 @@ const LandingPage = (props: any) => {
   const handleForm = (ev: any) => {
     const queries = [...checkboxInputs].join('+');
     const query = `?q=${queries}`;
-    console.log(query);
     props.history.push(`/news/multi/${query}`)
   }
 

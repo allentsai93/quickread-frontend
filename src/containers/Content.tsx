@@ -12,7 +12,7 @@ const Content = ({url, domain} : TParams) => {
     const [data, setData] = React.useState<null | {content: string, title: string, author: any, date_published: string, lead_image_url: string, originalWordCount: number, condensedWordCount: number, condensedContent: string, percentCondensed: string}>(null);
 
     React.useEffect(() => {
-        API.getData(`http://localhost:3001/summarize/${url}`).then(data => {
+        API.getData(`summarize/${url}`).then(data => {
             setData(data);
         }).catch(err => {
             const testData = {
