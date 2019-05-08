@@ -64,7 +64,6 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
 
   componentDidMount() {
     let url = 'topheadlines';
-    document.body.classList.add('background-white');
 
     if(this.props.location.search) {
       const searchParams = new URLSearchParams(this.props.location.search);

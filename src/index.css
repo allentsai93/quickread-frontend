@@ -17,15 +17,6 @@ html {
   height: 100%;
 }
 
-.background-teal #root {
-  background-color: #82c1b6;
-  overflow: hidden;
-}
-
-.background-white #root {
-  background-color: white;
-}
-
 #root {
   display: flex;
   justify-content: center;

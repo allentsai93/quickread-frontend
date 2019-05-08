@@ -6,6 +6,7 @@
     justify-content: flex-start;
     align-items: center;
     color: black;
+    background-color: #82c1b6;
 }
 
 body {
@@ -43,7 +44,6 @@ input[type="text"] {
     color: black;
     text-align: center;
     font-weight: 100;
-    font-size: 1em;
     letter-spacing: 3px;
     max-width: 62vw;
 }
