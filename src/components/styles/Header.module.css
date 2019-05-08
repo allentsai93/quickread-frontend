@@ -2,7 +2,7 @@ header {
     position: sticky;
     box-sizing: border-box;
     top: 0;
-    height: 70px;
+    height: 60px;
     width: 100%;
     background-color: rgb(130, 193, 183);
     display: flex;
@@ -12,6 +12,8 @@ header {
     z-index: 1;
     flex-flow: row wrap;
     transition: background-color 100ms ease-in;
+    -webkit-box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
 }
 
 header:hover {
@@ -22,6 +24,6 @@ header:hover {
     color: white;
     text-decoration: none;
     text-transform: lowercase;
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: 200;
 }

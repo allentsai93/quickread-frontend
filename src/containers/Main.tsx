@@ -178,7 +178,7 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
                     showArrows={false}
                     showIndicators={false}
                     centerMode={true}
-                    centerSlidePercentage={90}
+                    centerSlidePercentage={75}
                     swipeable
                     // className={styles.carousel}
                     // onClickItem={handleCarousel}

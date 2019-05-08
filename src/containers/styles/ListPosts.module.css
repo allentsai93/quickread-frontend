@@ -8,7 +8,7 @@
     /* border: 1px solid #fff7f7; */
     border-radius: 10px;
     position: relative;
-    /* background-color: #a8e2d8; */
+    background-color: #ffffff;
     /* border-left: none;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0; */
@@ -63,6 +63,7 @@
     margin: 1vmin 0.5vmin 3vmin;
     text-transform: uppercase;
     text-align: left;
+    border-bottom: 15px solid;
 }
 @media (max-width: 710px) {
     .li {
