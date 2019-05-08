@@ -121,11 +121,67 @@
     }
 }
 
+.li {
+    transition: background-color 50ms ease-in;
+    width: auto;
+    border-radius: 2px;
+    color: black;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 15px 10px;
+}
+
+.li:first-child {
+    margin-top: 0;
+}
+
+.li:hover {
+    background-color: #477970;
+    color: white;
+}
+
+.liHeadline {
+    display: block;
+    height: 100%;
+}
+
+@media (max-width: 710px) {
+    .li {
+        padding: 0 0 15px;
+        -webkit-box-shadow: 0px 0px 12px 3px rgba(0,0,0,0.22); 
+        box-shadow: 0px 0px 12px 3px rgba(0,0,0,0.22);
+        margin-bottom: 6vw;
+    }
+}
+
 @media (max-width: 768px) {
     .headlineArticle {
-        border-radius: 10px;
+        border-radius: 6px;
     }
     .headlineContent > h2 {
         display: none;
+    }
+
+    .activeLi {
+        animation-duration: 300ms;
+        animation-name: toggleButton;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: 1;
+    }
+    
+    @keyframes toggleButton {
+        0% {
+            transform: scale(0.9);
+        }
+        25% {
+            transform: scale(0.95);
+        }
+        50% {
+            transform: scale(1.05);
+        }
     }
 }

@@ -4,16 +4,10 @@ import Post from "./Post";
 
 
 const ListPosts = ({posts, query} : any) => {
-  const bubblerHandler = (e: any) => {
-    e.stopPropagation();
-    return false;
-  }
-
     return (
         <ul className={styles.ul}>
         <li className={styles.categoryTitle}>{query}</li>
         {posts.map((post: any, i: number) => (
-          <li className={styles.li} key={i} onClick={bubblerHandler}>
             <Post
               title={post.title}
               from={post.source.name}
@@ -24,7 +18,6 @@ const ListPosts = ({posts, query} : any) => {
               description={post.description}
               headline={false}
             />
-          </li>
         ))}
       </ul>
     )

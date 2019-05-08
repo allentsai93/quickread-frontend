@@ -176,7 +176,7 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
                     showThumbs={false}
                     showStatus={false}
                     showArrows={false}
-                    // showIndicators={false}
+                    showIndicators={false}
                     centerMode={true}
                     centerSlidePercentage={90}
                     swipeable
