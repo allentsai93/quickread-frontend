@@ -231,16 +231,18 @@ button img {
     z-index: 1;
 }
 
-.activeBgText {
-    color: white !important;
-    transition: color 300ms ease-out, opacity 300ms ease-out;
-    opacity: 0.2;
-}
-
 .BgText {
     color: black;
     transition: color 300ms ease-in, opacity 300ms ease-out;
     opacity: 0.1;
+}
+
+.activeBgText {
+    color: white !important;
+    transition: color 300ms ease-out, opacity 300ms ease-out;
+    opacity: 0.4;
+    width: 0;
+    overflow: hidden;
 }
 
 .landingHeader {

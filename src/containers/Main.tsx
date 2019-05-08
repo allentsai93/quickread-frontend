@@ -64,6 +64,7 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
 
   componentDidMount() {
     let url = 'topheadlines';
+    document.body.classList.add('background-white');
 
     if(this.props.location.search) {
       const searchParams = new URLSearchParams(this.props.location.search);
@@ -126,20 +127,21 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
     const listOfPosts = this.state.loaded ? this.state.newsData.map((source, i) => {
       const pos = `positionX${i}`;
       return (
-      <Swipeable
-        style={{
-          borderLeft: `${this.state[pos]}px solid #630e0e`,
-          margin: '10px',
-          borderRadius: '10px',
-          flex: '3',
-          width: 'auto'
-        }}
-        trackMouse
-        // onSwiping={(e: any) => { this.onSwipeMove(e, pos); }}
-        // onSwiped={() => { this.onSwipeEnd(pos, i); }}
-        key={i}>
-        <ListPosts posts={source.articles} query={source.query} />
-      </Swipeable>
+      // <Swipeable
+      //   style={{
+      //     borderLeft: `${this.state[pos]}px solid #630e0e`,
+      //     // margin: '10px',
+      //     // borderRadius: '10px',
+      //     // flex: '3',
+      //     // width: 'auto'
+      //   }}
+      //   trackMouse
+      //   // onSwiping={(e: any) => { this.onSwipeMove(e, pos); }}
+      //   // onSwiped={() => { this.onSwipeEnd(pos, i); }}
+      //   key={i}>
+      //   <ListPosts posts={source.articles} query={source.query} />
+      // </Swipeable>
+      <ListPosts key={i} posts={source.articles} query={source.query} />
     )}) : null;
 
     return (
@@ -150,7 +152,7 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
             <div className={[styles.container, 'main-page'].join(' ')}>
               <HeadlinePost posts={this.state.headlinePosts}/>
               <div className={styles.listControlContainer}>
-              <div className={styles.Controls}>
+              {/* <div className={styles.Controls}>
                   <Button src={add} event={this.showSelectionHandler} />
                   {this.state.showSelection ? (
                     <ul className={styles.activeList}>
@@ -168,15 +170,16 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
                       </li>
                     </ul>
                   ) : <ul></ul>}
-                </div>
+                </div> */}
                 <div className={styles.listContainer}>
+                  {this.state.newsData.length > 1 ?
                   <Carousel
                     showThumbs={false}
                     showStatus={false}
                     showArrows={false}
-                    showIndicators={false}
+                    // showIndicators={false}
                     centerMode={true}
-                    centerSlidePercentage={50}
+                    centerSlidePercentage={100}
                     swipeable
                     emulateTouch={true}
                     // className={styles.carousel}
@@ -185,6 +188,7 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
                   >
                     {listOfPosts}
                   </Carousel>
+                  : listOfPosts }
                   {/* {this.state.showSpinner ? (
                     <div className={styles.loadingContainerMore}>
                       <img src={spinner} />

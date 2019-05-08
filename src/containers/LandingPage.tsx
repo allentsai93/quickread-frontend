@@ -5,7 +5,7 @@ import searchIcon from "../assets/search.svg";
 import { CSSTransition } from "react-transition-group";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import Typist from 'react-typist';
+import Typist from "react-typist";
 import Card from "../components/Card";
 import AutoSuggest from "../components/AutoSuggest";
 
@@ -20,8 +20,8 @@ type Content = {
 
 type Source = {
   category: string;
-  content: Content[]
-}
+  content: Content[];
+};
 
 const LandingPage = (props: any) => {
   const [sources, setSources] = React.useState<null | Source[]>(null);
@@ -31,29 +31,30 @@ const LandingPage = (props: any) => {
   const [searchSource, setSearchSource] = React.useState("");
   const [checkboxInputs, setCheckboxInputs] = React.useState<string[]>([]);
   const [autoSuggest, setAutoSuggest] = React.useState<null | Content[]>(null);
-  const [uncategorizedData, setUncategorizedData] = React.useState<null | Content[]>(null);
-  const [carouselIndex, setCarouselIndex] = React.useState(1);
+  const [uncategorizedData, setUncategorizedData] = React.useState< null | Content[]>(null);
+  const [carouselIndex, setCarouselIndex] = React.useState(0);
   const [formSubmit, showFormSubmit] = React.useState(false);
 
   React.useEffect(() => {
     getSources();
-    document.title='Teeldr - Too Long; Did Read';
+    document.title = "Teeldr - Too Long; Did Read";
+    document.body.classList.add('background-teal');
   }, []);
 
   React.useEffect(() => {
-    if(checkboxInputs.length){
+    if (checkboxInputs.length) {
       showFormSubmit(true);
     } else {
       showFormSubmit(false);
     }
-  }, [checkboxInputs])
+  }, [checkboxInputs]);
 
   const getSources = () => {
     API.getData(`sources/categorized`).then(data => {
       setSources(data);
       const flattenData = [];
-      for(let i = 0; i < data.length; i++) {
-        for(let j = 0; j < data[i].content.length; j++) {
+      for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data[i].content.length; j++) {
           flattenData.push(data[i].content[j]);
         }
       }
@@ -105,98 +106,132 @@ const LandingPage = (props: any) => {
 
   const handleCarousel = (index: number) => {
     setCarouselIndex(index);
-  }
+  };
 
   const handleForm = (ev: any) => {
-    const queries = [...checkboxInputs].join('+');
+    const queries = [...checkboxInputs].join("+");
     const query = `?q=${queries}`;
-    props.history.push(`/news/multi/${query}`)
-  }
+    props.history.push(`/news/multi/${query}`);
+  };
 
   return (
-    <div className={[styles.container, 'landing-page'].join(' ')}>
+    <div className={[styles.container, "landing-page"].join(" ")}>
       <div className={styles.landingHeader}>
-      <div className={styles.company}>
-        <h1>Teeldr</h1>
-        <h2>Too Long; Did Read</h2>
-      </div>
-      <div className={styles.landingCopy}>
-        <p>Every day news summarized by robots hard at work.</p>
-      </div>
+        <div className={styles.company}>
+          <h1>Teeldr</h1>
+          <h2>Too Long; Did Read</h2>
+        </div>
+        <div className={styles.landingCopy}>
+          <p>Every day news summarized by robots hard at work.</p>
+        </div>
       </div>
 
-     
       <div className={styles.options}>
         <form className={styles.filterForm}>
-          {sources && <Carousel 
-            showThumbs={false}
-            showStatus={false}
-            showArrows={false}
-            showIndicators={false}
-            centerMode={true}
-            // centerSlidePercentage={80}
-            swipeScrollTolerance={1}
-            className={styles.carousel}
-            onClickItem={handleCarousel}
-            selectedItem={carouselIndex}
-          >
-            {sources!.map((cat, i) => (
-              <Card title={cat.category} key={cat.category + i.toString()} content={cat.content} checkbox={handleCheckbox}/>
-            ))}
-          </Carousel>}
+          {sources && (
+            <Carousel
+              showThumbs={false}
+              showStatus={false}
+              showArrows={false}
+              showIndicators={false}
+              centerMode={true}
+              centerSlidePercentage={50}
+              // infiniteLoop={true}
+              swipeable
+              className={styles.carousel}
+              onClickItem={handleCarousel}
+              selectedItem={carouselIndex}
+            >
+              {sources!.map((cat, i) => (
+                <Card
+                  title={cat.category}
+                  key={cat.category + i.toString()}
+                  content={cat.content}
+                  checkbox={handleCheckbox}
+                />
+              ))}
+            </Carousel>
+          )}
         </form>
       </div>
       <div className={styles.inputContainer}>
-
-<form>
-  <input
-    type={"text"}
-    value={searchTerm}
-    placeholder={"Search for a topic or source"}
-    onChange={e => searchHandler(e.target.value)}
-  />
-  <CSSTransition
-    in={showSubmit}
-    classNames={{
-      exit: styles["exit"],
-      enter: styles["enter"],
-      enterActive: styles["enterActive"],
-      exitActive: styles["exitActive"]
-    }}
-    timeout={1000}
-    mountOnEnter
-    unmountOnExit
-    appear
-  >
-    <button type={"submit"} onSubmit={submitHandler}>
-      <img src={searchIcon} />
-    </button>
-  </CSSTransition>
-</form>
-<CSSTransition
-  in={showSuggestions}
-  classNames={{
-    exit: styles["exitSuggestions"],
-    enter: styles["enterSuggestions"],
-    enterActive: styles["enterActiveSuggestions"],
-    exitActive: styles["exitActiveSuggestions"]
-  }}
-  timeout={500}
-  mountOnEnter
-  unmountOnExit
-  appear
->
-{autoSuggest ? <AutoSuggest clickEvent={setSearchSource} content={autoSuggest!}/> : <></>}
-</CSSTransition>
-</div>
+        <form>
+          <input
+            type={"text"}
+            value={searchTerm}
+            placeholder={"Search for a topic or source"}
+            onChange={e => searchHandler(e.target.value)}
+          />
+          <CSSTransition
+            in={showSubmit}
+            classNames={{
+              exit: styles["exit"],
+              enter: styles["enter"],
+              enterActive: styles["enterActive"],
+              exitActive: styles["exitActive"]
+            }}
+            timeout={1000}
+            mountOnEnter
+            unmountOnExit
+            appear
+          >
+            <button type={"submit"} onSubmit={submitHandler}>
+              <img src={searchIcon} />
+            </button>
+          </CSSTransition>
+        </form>
+        <CSSTransition
+          in={showSuggestions}
+          classNames={{
+            exit: styles["exitSuggestions"],
+            enter: styles["enterSuggestions"],
+            enterActive: styles["enterActiveSuggestions"],
+            exitActive: styles["exitActiveSuggestions"]
+          }}
+          timeout={500}
+          mountOnEnter
+          unmountOnExit
+          appear
+        >
+          {autoSuggest ? (
+            <AutoSuggest clickEvent={setSearchSource} content={autoSuggest!} />
+          ) : (
+            <></>
+          )}
+        </CSSTransition>
+      </div>
       {/* {checkboxInputs ? 
       message!.split(', ').map(msg => <Typist className={styles.Typist} key={generateKey(msg)} cursor={{hideWhenDone: true}} >
         <span>{msg}</span>
       </Typist>) : null} */}
-      {formSubmit ? <div onClick={handleForm} className={styles.submitBtn}>Search</div> : 
-        <div onClick={handleForm} className={styles.randomContainer}><p>Pick as many sources as you want</p><div className={styles.randomBtn}>Or randomize it</div></div>
-      }
-      {uncategorizedData && <div className={styles.background}><div>{uncategorizedData.map((data, i) => <span className={!checkboxInputs.includes(data.id) ? styles.BgText : [styles.activeBgText, styles.BgText].join(' ')} key={data.name + i.toString()}>{data.name}</span>)}</div></div>}
+      {formSubmit ? (
+        <div onClick={handleForm} className={styles.submitBtn}>
+          Search
+        </div>
+      ) : (
+        <div onClick={handleForm} className={styles.randomContainer}>
+          <p>Pick as many sources as you want</p>
+          <div className={styles.randomBtn}>Or randomize it</div>
+        </div>
+      )}
+      {uncategorizedData && (
+        <div className={styles.background}>
+          <div>
+            {uncategorizedData.map((data, i) => (
+              <span
+                className={
+                  !checkboxInputs.includes(data.id)
+                    ? styles.BgText
+                    : [styles.activeBgText, styles.BgText].join(" ")
+                }
+                key={data.name + i.toString()}
+              >
+                {data.name}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

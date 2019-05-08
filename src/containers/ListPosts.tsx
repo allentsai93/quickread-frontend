@@ -16,6 +16,7 @@ const ListPosts = ({posts, query} : any) => {
               author={post.source.name}
               created={post.publishedAt}
               image={post.urlToImage}
+              description={post.description}
               headline={false}
             />
           </li>

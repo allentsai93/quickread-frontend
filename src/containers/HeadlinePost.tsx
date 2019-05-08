@@ -37,6 +37,7 @@ const HeadlinePost = ({ posts }: TParams) => {
                 author={post.source.name}
                 created={post.publishedAt}
                 image={post.urlToImage}
+                description={''}
                 headline
               />
             </div>
@@ -52,6 +53,7 @@ const HeadlinePost = ({ posts }: TParams) => {
                     author={post.source.name}
                     created={post.publishedAt}
                     image={post.urlToImage}
+                    description={''}
                     headline
                   />
                 </div>

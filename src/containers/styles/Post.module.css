@@ -4,8 +4,15 @@
 }
 
 .article h2 {
-    font-size: 0.6em;
+    font-size: 1.5em;
+    font-weight: 300;
+    margin: 0;
+}
+
+.content p {
+    font-size: 1.3em;
     font-weight: 100;
+    margin: 0;
 }
 
 .headlineImg {
@@ -24,6 +31,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    font-size: 1.5em;
 }
 
 .headlineContent {
@@ -36,27 +44,25 @@
 }
 
 .img {
-    width: auto;
-    height: 100%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
+    width: auto !important;
+    height: 150px;
+    max-width: 100%;
+    transition: height 100ms ease-in;
 }
 
 .imgContainer {
     overflow: hidden;
-    width: 4vmax;
-    height: 4vmax;
+    width: auto;
+    height: 100%;
     position: relative;
     margin-right: 1vmax;
-    border: 2px solid #334a4e;
-    border-radius: 50%;
+    border-radius: 6px;
 }
 
 .content {
     order: 2;
-    max-width: 80%;
+    text-align: left;
+    max-width: 50vw;
 }
 
 .article {
@@ -65,6 +71,7 @@
     align-items: center;
     position: relative;
     background-image: none !important;
+    flex: 100%;
 }
 
 .contentContainer {
@@ -75,6 +82,49 @@
 }
 
 .contentContainerActive {
-    min-height: 300px;
+    min-height: 230px;
     transition: min-height 100ms ease-in;
+}
+
+.closeBtn {
+    font-size: 2em !important;
+    font-weight: lighter;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+@media (min-width: 769px) {
+    .activeArticle {
+
+    }
+    
+    .activeArticle img {
+        height: 300px;
+    }
+}
+
+@media (max-width: 710px) {
+    .content {
+        max-width: 100%;
+        padding: 20px 10px;
+    }
+    .img {
+        width: 100% !important;
+        height: auto;
+    }
+    .imgContainer {
+        margin: 0;
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .headlineArticle {
+        border-radius: 10px;
+    }
+    .headlineContent > h2 {
+        display: none;
+    }
 }

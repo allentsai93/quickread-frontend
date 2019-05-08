@@ -34,7 +34,7 @@ const Content = ({url, domain} : TParams) => {
         <div>
             { data ? 
                 <div className={styles.scrapedContent}>
-                    {data.lead_image_url ? <img src={data.lead_image_url}/> : null}
+                    {/* {data.lead_image_url ? <img src={data.lead_image_url}/> : null} */}
                     {data.condensedContent ? 
                         <div className={styles.contentContainer}>
                             <p>{data.condensedContent}</p>

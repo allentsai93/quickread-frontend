@@ -35,9 +35,9 @@
 }
 
 .listContainer {
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    flex-flow: row wrap;
+    flex-flow: row wrap; */
     width: 100%;
     max-width: 100%;
     flex: 10;
@@ -50,9 +50,9 @@
     justify-content: flex-start;
     align-items: flex-start;
     flex-flow: column wrap;
-    width: auto;
+    width: 100vw;
     max-width: 100%;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .buttonContainer {

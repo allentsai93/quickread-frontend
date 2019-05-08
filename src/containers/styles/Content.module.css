@@ -10,9 +10,12 @@
 .scrapedContent {
     border: 1px solid #e2e2e2;
     border-radius: 13px;
-    width: 95%;
-    margin: 15px auto;
+    width: 100%;
+    margin: 30px 0px;
     overflow: hidden;
+    text-align: left;
+    font-size: 1.5em;
+    font-weight: lighter;
 }
 
 .data .datatext {
@@ -30,15 +33,21 @@ img {
 
 .contentContainer {
     width: 97%;
-    margin: 0 auto;
+    padding: 0 10px;
     margin-bottom: 20px;
 }
 
 .spinner {
-    width: 60px;
-    display: block;
+    width: 60px !important;
+    display: block !important;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+}
+
+@media (max-width: 710px) {
+    .scrapedContent {
+        border: none;
+    }
 }

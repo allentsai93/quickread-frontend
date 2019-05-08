@@ -38,15 +38,27 @@
 
 @media (max-width: 768px) {
     .subHeadlineContainer {
-        min-width: 800px;
-        flex-flow: row nowrap;
+        min-width: auto;
+        flex-flow: column wrap;
+        flex: 66%;
+    }
+    .subHeadlineContainer div:first-child {
+        flex: 50%;
     }
 
     .subHeadlineContainer div {
-        width: 400px;
+        width: 100%;
+        padding: 1vw;
     }
 
     .headline1 {
-        min-width: 300px;
+        flex: 33%;
+        min-width: auto;
+        margin: 1vw;
     }
+
+    .headlineCarousel {
+        height: 40vmax;
+    }
+
 }

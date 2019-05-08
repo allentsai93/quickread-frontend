@@ -17,11 +17,18 @@ html {
   height: 100%;
 }
 
+.background-teal #root {
+  background-color: #82c1b6;
+  overflow: hidden;
+}
+
+.background-white #root {
+  background-color: white;
+}
+
 #root {
   display: flex;
   justify-content: center;
-  background-color: #82c1b6;
-  overflow: hidden;
   flex-flow: column nowrap;
   justify-content: space-between;
   min-height: 100vh;
@@ -31,10 +38,19 @@ html {
   outline: none;
 }
 
-body, div {
+body {
   font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+}
+
+div {
   word-break: break-word;
   box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+  body {
+    font-size: calc(16px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  }
 }
 
 body {
@@ -64,16 +80,15 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 5px;
   transform: scale(1);
   transition: transform 200ms ease-in;
+  padding: 0 15px;
   box-sizing: content-box;
 }
 
 .landing-page .carousel .slider-wrapper.axis-horizontal .slider .slide.selected {
-  transform: scale(1.05);
+  /* transform: scale(1.05); */
   transition: transform 200ms ease-out;
-  margin: 0 15px !important;
 }
 
 
@@ -83,4 +98,11 @@ p {
 
 .main-page .carousel .slide {
   background: none;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .main-page .carousel .slide {
+    padding: 0px;
+  }
 }
