@@ -49,10 +49,10 @@ const Post = ({ title, from, url, author, created, image, headline, description 
                 />
             : null}
             </div>
-            {headline ? null :
+            {!headline ? 
                 <div className={styles.imgContainer}>
                     <img src={image} className={styles.img}/>
-                </div>
+                </div> : null
             }
         </article>
     )

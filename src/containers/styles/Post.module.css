@@ -90,9 +90,10 @@
     font-size: 2em !important;
     font-weight: lighter;
     position: absolute;
-    right: 0;
+    right: 10px;
     top: 0;
     cursor: pointer;
+    z-index: 1;
 }
 
 @media (min-width: 769px) {
