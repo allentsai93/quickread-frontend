@@ -134,7 +134,7 @@ const LandingPage = (props: any) => {
             showArrows={false}
             showIndicators={false}
             centerMode={true}
-            centerSlidePercentage={30}
+            // centerSlidePercentage={80}
             swipeScrollTolerance={1}
             className={styles.carousel}
             onClickItem={handleCarousel}
