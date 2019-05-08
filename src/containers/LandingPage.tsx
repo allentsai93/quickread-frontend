@@ -37,6 +37,7 @@ const LandingPage = (props: any) => {
 
   React.useEffect(() => {
     getSources();
+    document.title='Teeldr - Too Long; Did Read';
   }, []);
 
   React.useEffect(() => {

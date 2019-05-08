@@ -68,7 +68,11 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
     if(this.props.location.search) {
       const searchParams = new URLSearchParams(this.props.location.search);
       const search = searchParams.get('q')!.split(' ').join(',');
+      const title = searchParams.get('q')!.split(' ').join(', ');
       url = `sources/news/noparse?q=${search}`;
+      document.title=`Teeldr - ${title}`;
+    } else {
+      document.title=`Teeldr - Top Headlines`;
     }
     
     API.getData(`${url}`).then(data => {
