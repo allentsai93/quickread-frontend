@@ -1,18 +1,27 @@
 header {
     position: sticky;
+    box-sizing: border-box;
     top: 0;
-    height: 50px;
+    height: 70px;
     width: 100%;
-    background-color: rgba(0,0,0,0.0);
+    background-color: rgb(130, 193, 183);
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    padding: 0 25px;
     align-items: center;
     z-index: 1;
     flex-flow: row wrap;
     transition: background-color 100ms ease-in;
-    margin-bottom: 10px;
 }
 
 header:hover {
     background-color: black;
+}
+
+.logo {
+    color: white;
+    text-decoration: none;
+    text-transform: lowercase;
+    font-size: 1.5em;
+    font-weight: 200;
 }

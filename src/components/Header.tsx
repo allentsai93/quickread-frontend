@@ -6,7 +6,7 @@ import styles from './styles/Header.module.css';
 const Header = () => {
     return (
         <header className={styles.header}>
-          <Link to="/" >Main</Link>
+          <Link to="/" className={styles.logo}>Teeldr</Link>
         </header>
     )
 };
