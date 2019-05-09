@@ -87,6 +87,7 @@
     }
     .categoryTitle {
         font-size: 1.5em;
-        border-bottom-width: 8px;
+        border-bottom-width: 4px;
+        border-radius: 5px;
     }
 }
