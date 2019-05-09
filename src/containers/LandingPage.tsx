@@ -1,6 +1,5 @@
 import * as React from "react";
 import styles from "./styles/LandingPage.module.css";
-import API from "../service/api";
 import searchIcon from "../assets/search.svg";
 import { CSSTransition } from "react-transition-group";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -8,6 +7,7 @@ import { Carousel } from "react-responsive-carousel";
 import Typist from "react-typist";
 import Card from "../components/Card";
 import AutoSuggest from "../components/AutoSuggest";
+import useGlobal from '../store';
 
 type Content = {
   id: string;
@@ -24,7 +24,8 @@ type Source = {
 };
 
 const LandingPage = (props: any) => {
-  const [sources, setSources] = React.useState<null | Source[]>(null);
+  const [globalState, globalActions] = useGlobal();
+  const { categoriesStatus, categories } = globalState;
   const [showSuggestions, setShowSuggestions] = React.useState(false);
   const [showSubmit, setShowSubmit] = React.useState(false);
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -36,7 +37,8 @@ const LandingPage = (props: any) => {
   const [formSubmit, showFormSubmit] = React.useState(false);
 
   React.useEffect(() => {
-    getSources();
+    globalActions.categories.getCategories();
+    flattenCategories();
     document.title = "Teeldr - Too Long; Did Read";
     document.body.classList.add('background-teal');
   }, []);
@@ -49,18 +51,15 @@ const LandingPage = (props: any) => {
     }
   }, [checkboxInputs]);
 
-  const getSources = () => {
-    API.getData(`sources/categorized`).then(data => {
-      setSources(data);
-      const flattenData = [];
-      for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data[i].content.length; j++) {
-          flattenData.push(data[i].content[j]);
-        }
+  const flattenCategories = () => {
+    const flattenData = [];
+    for (let i = 0; i < categories.length; i++) {
+      for (let j = 0; j < categories[i].content.length; j++) {
+        flattenData.push(categories[i].content[j]);
       }
-      setUncategorizedData(flattenData);
-    });
-  };
+    }
+    setUncategorizedData(flattenData);
+  }
 
   const searchHandler = (term: any) => {
     setSearchTerm(term);
@@ -128,7 +127,7 @@ const LandingPage = (props: any) => {
 
       <div className={styles.options}>
         <form className={styles.filterForm}>
-          {sources && (
+          {categoriesStatus == "SUCCESS" && categories && (
             <Carousel
               showThumbs={false}
               showStatus={false}
@@ -136,13 +135,12 @@ const LandingPage = (props: any) => {
               showIndicators={false}
               centerMode={true}
               centerSlidePercentage={50}
-              // infiniteLoop={true}
               swipeable
               className={styles.carousel}
               onClickItem={handleCarousel}
               selectedItem={carouselIndex}
             >
-              {sources!.map((cat, i) => (
+              {categories!.map((cat: Source, i: number) => (
                 <Card
                   title={cat.category}
                   key={cat.category + i.toString()}
