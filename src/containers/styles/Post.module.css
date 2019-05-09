@@ -150,6 +150,7 @@
         -webkit-box-shadow: 0px 0px 12px 3px rgba(0,0,0,0.22); 
         box-shadow: 0px 0px 12px 3px rgba(0,0,0,0.22);
         margin-bottom: 6vw;
+        border-radius: 25px;
     }
 }
 .activeLi {
@@ -161,7 +162,7 @@
 
 @media (max-width: 768px) {
     .headlineArticle {
-        border-radius: 6px;
+        border-radius: 15px;
     }
     .headlineContent > h2 {
         display: none;
