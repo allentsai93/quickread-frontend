@@ -20,8 +20,14 @@ type NewsPost = {
     };
 };
 
+type NewsSource = {
+  query: string;
+  status: string;
+  articles: NewsPost[];
+}
+
 type TParams = {
-    posts: NewsPost[];
+    posts: NewsSource[];
 }
   
 const HeadlinePost = ({ posts }: TParams) => {
@@ -31,28 +37,28 @@ const HeadlinePost = ({ posts }: TParams) => {
           {posts!.slice(0, 1).map((post: any, i: number) => (
             <div key={i} className={styles.headline1}>
               <Post
-                title={post.title}
-                from={post.source.name}
-                url={post.url}
-                author={post.source.name}
-                created={post.publishedAt}
-                image={post.urlToImage}
+                title={post.query}
+                from={post.articles[0].source.name}
+                url={post.articles[0].url}
+                author={post.articles[0].source.name}
+                created={post.articles[0].publishedAt}
+                image={post.articles[0].urlToImage}
                 description={''}
                 headline
               />
             </div>
           ))}
-          <div className={styles.subHeadlineContainer}>
+          <div className={posts!.length > 1 ? styles.subHeadlineContainer : ''}>
             {posts!.slice(1, 3).map(
               (post: any, i: number) => (
                 <div key={i}>
                   <Post
-                    title={post.title}
-                    from={post.source.name}
-                    url={post.url}
-                    author={post.source.name}
-                    created={post.publishedAt}
-                    image={post.urlToImage}
+                    title={post.query}
+                    from={post.articles[0].source.name}
+                    url={post.articles[0].url}
+                    author={post.articles[0].source.name}
+                    created={post.articles[0].publishedAt}
+                    image={post.articles[0].urlToImage}
                     description={''}
                     headline
                   />

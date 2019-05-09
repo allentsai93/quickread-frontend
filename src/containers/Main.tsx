@@ -78,7 +78,6 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
     API.getData(`${url}`).then(data => {
       this.setState(() => ({
         newsData: data,
-        headlinePosts: data[0].articles.slice(0, 3),
         loaded: true
       }));
     });
@@ -149,7 +148,7 @@ class Main extends Component<RouteComponentProps<{source: string}>, MyState> {
         {this.state.loaded ? (
           <>
             <div className={[styles.container, 'main-page'].join(' ')}>
-              <HeadlinePost posts={this.state.headlinePosts}/>
+              <HeadlinePost posts={this.state.newsData}/>
               <div className={styles.listControlContainer}>
               {/* <div className={styles.Controls}>
                   <Button src={add} event={this.showSelectionHandler} />
