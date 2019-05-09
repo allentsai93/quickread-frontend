@@ -24,6 +24,11 @@ header {
     font-weight: 200;
 }
 
+.beta {
+    font-size: inherit;
+    color: black;
+}
+
 @media (min-width: 1024px) {
     header:hover {
         background-color: black;
