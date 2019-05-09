@@ -135,3 +135,21 @@
         background-color: #0a1b00;
     }
 }
+
+.exitModal > * {
+    transform: scale(1);
+}
+
+.enterModal > * {
+    transform: scale(0);
+}
+
+.enterActiveModal > * {
+    transform: scale(1);
+    transition: transform 150ms ease-in;
+}
+
+.exitActiveModal > * {
+    transform: scale(0);
+    transition: transform 150ms ease-in;
+}

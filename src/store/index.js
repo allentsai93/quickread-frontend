@@ -15,6 +15,7 @@ const initialState = {
     description: '',
     image: ''
   },
+  showModal: false,
   categories: [],
   categoriesStatus: "INITIAL"
 };

@@ -17,7 +17,9 @@ html {
   height: 100%;
   scroll-behavior: smooth;
 }
-
+body.activeModal {
+  overflow: hidden;
+}
 
 #root {
   display: flex;
@@ -84,6 +86,12 @@ p {
   transition: transform 200ms ease-out;
 }
 
+.activeModal .slide {
+  background: none !important;
+  text-align: left !important;
+  border-right: 1px solid #adadad;
+  padding: 0 5px;
+}
 
 .selected > div {
   margin: 10px !important;
