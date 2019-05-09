@@ -6,9 +6,8 @@
     transition: background-color 50ms ease-in;
     cursor: pointer;
 }
-.checkboxInputDiv:hover {
-    background-color: #b7e2d9;
-}
+
+
 .checkboxInputActive {
     background-color: #56b19f;
     color: white;
@@ -26,4 +25,10 @@
     height: 100%;
     cursor: pointer;
     padding: 10px;
+}
+
+@media (min-width: 1024px) {
+    .checkboxInputDiv:hover {
+        background-color: #b7e2d9;
+    }
 }

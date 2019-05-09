@@ -25,12 +25,14 @@
     transition: background-color 100ms ease-in;
 }
 
-.suggestionsBox > span:hover {
-    background-color: #d5dff5;
-}
-
 .sourceSpan {
     float: right;
     font-size: 0.7em;
     font-weight: 100;
+}
+
+@media (min-width: 1024px) {
+    .suggestionsBox > span:hover {
+        background-color: #d5dff5;
+    }
 }

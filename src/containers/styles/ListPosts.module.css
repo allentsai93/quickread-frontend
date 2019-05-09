@@ -51,11 +51,6 @@
     margin-top: 0;
 }
 
-.li:hover {
-    background-color: #212121;
-    color: white;
-}
-
 .categoryTitle {
     font-weight: bold;
     font-size: 2em;
@@ -76,5 +71,22 @@
         box-shadow: none;
         border-right: 1px solid #e6e6e6;
         border-radius: 0;
+    }
+
+}
+@media (min-width: 1024px) {
+    .li:hover {
+        background-color: #212121;
+        color: white;
+    }    
+}
+
+@media (max-width: 1024px) {
+    .ul {
+        font-size: 0.7em;
+    }
+    .categoryTitle {
+        font-size: 1.5em;
+        border-bottom-width: 8px;
     }
 }

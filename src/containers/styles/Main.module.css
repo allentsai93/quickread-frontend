@@ -30,9 +30,6 @@
     margin-top: 0;
 }
 
-.li:hover {
-    background-color: #212121;
-}
 
 .listContainer {
     /* display: flex;
@@ -68,13 +65,6 @@
     cursor: pointer;
 }
 
-.buttonContainer:first-child:hover {
-    background-color: #190000;
-}
-
-.buttonContainer:hover {
-    background-color: #0a1b00;
-}
 
 .loadingContainer {
     width: 100vw;
@@ -132,4 +122,16 @@
     font-size: 0.6em;
     text-transform: uppercase;
     margin: 10px;
+}
+
+@media (min-width: 1024px) {
+    .li:hover {
+        background-color: #212121;
+    }  
+    .buttonContainer:first-child:hover {
+        background-color: #190000;
+    }
+    .buttonContainer:hover {
+        background-color: #0a1b00;
+    }
 }

@@ -17,6 +17,7 @@ const ListPosts = ({posts, query} : any) => {
               image={post.urlToImage}
               description={post.description}
               headline={false}
+              key={i}
             />
         ))}
       </ul>

@@ -52,7 +52,7 @@ const Content = ({url, domain} : TParams) => {
                     </div>
                     }
                 </div>
-            : <img className={styles.spinner} src={spinner} />
+            : <div className={styles.spinnerContainer}><img className={styles.spinner} src={spinner} /></div>
             }
         </div>
     )

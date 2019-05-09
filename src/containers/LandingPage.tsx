@@ -209,10 +209,11 @@ const LandingPage = (props: any) => {
           Search
         </div>
       ) : (
-        <div onClick={handleForm} className={styles.randomContainer}>
-          <p>Pick as many sources as you want</p>
-          <div className={styles.randomBtn}>Or randomize it</div>
-        </div>
+        // <div onClick={handleForm} className={styles.randomContainer}>
+        //   <p>Pick as many sources as you want</p>
+        //   <div className={styles.randomBtn}>Or randomize it</div>
+        // </div>
+        null
       )}
       {uncategorizedData && (
         <div className={styles.background}>

@@ -62,7 +62,11 @@
 .content {
     order: 2;
     text-align: left;
-    max-width: 50vw;
+    max-width: 57%;
+}
+
+.activeArticle .content {
+    max-width: 100%;
 }
 
 .article {
@@ -139,11 +143,6 @@
     margin-top: 0;
 }
 
-.li:hover {
-    background-color: #477970;
-    color: white;
-}
-
 .liHeadline {
     display: block;
     height: 100%;
@@ -194,5 +193,21 @@
         50% {
             transform: scale(1.05);
         }
+    }
+}
+
+@media (min-width: 1024px) {
+    .li:hover {
+        background-color: #477970;
+        color: white;
+    }
+}
+
+@media (max-width: 1024px) {
+    .content p {
+        font-size: 1.1em;
+    }
+    .article h2 {
+        font-size: 1.3em;
     }
 }
