@@ -41,10 +41,24 @@
 
 .contentContainer p {
     font-size: 0.8em;
+    margin: 1px 0;
+}
+
+.contentContainer h3 {
+    text-transform: uppercase;
+    padding: 5px;
+    background-color: #ffffffb8;
+    display: inline-flex;
+    margin: 5px 0;
+    color: #4c9287;
+    border-radius: 10px;
+    font-size: 0.5em;
 }
 
 .contentStats {
-
+    font-size: 0.7em;
+    text-transform: uppercase;
+    font-weight: 100;
 }
 
 .image {
@@ -81,6 +95,9 @@
     .content {
         background-color: #247d71d6;
     }
+    .closeModal {
+        position: fixed;
+    }
 }
 
 @media (min-width: 769px) {
@@ -97,3 +114,9 @@
     left: 50%;
     transform: translate(-50%,-50%);
 }
+
+a {
+    color: #82ffbf;
+    text-decoration: none;
+}
+

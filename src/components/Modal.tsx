@@ -24,6 +24,13 @@ const Modal = () => {
           <div className={styles.content}>
           <h1>{modalContent.title}</h1>
           <h2>{modalContent.excerpt}</h2>
+          <div className={styles.contentStats}>
+            <a target="_blank" href={modalContent.url}>{modalContent.domain || "Source"}</a>
+            {!modalContent.error ? (
+              <p>Summarized Word Count: {modalContent.condensedWordCount}</p>
+            ) : null}
+            <p>Original Word Count: {modalContent.originalWordCount}</p>
+          </div>
           {modalContent.error ? (
             <div className={styles.contentContainer}>
                   <h3>Original Article</h3>
@@ -37,7 +44,6 @@ const Modal = () => {
               showIndicators={false}
               centerMode={true}
               centerSlidePercentage={95}
-              swipeable
             >
               <div className={styles.contentContainer}>
                 <h3>Summarized Article</h3>
@@ -49,13 +55,6 @@ const Modal = () => {
               </div>
             </Carousel>
           )}
-          <div className={styles.contentStats}>
-            <a href={modalContent.url}>{modalContent.domain || "Source"}</a>
-            {!modalContent.error ? (
-              <p>Summarized Word Count: {modalContent.condensedWordCount}</p>
-            ) : null}
-            <p>Original Word Count: {modalContent.originalWordCount}</p>
-          </div>
         </div> 
         </> :  <img src={spinner} className={styles.loadingIcon} alt="loading" />}
         </div>
