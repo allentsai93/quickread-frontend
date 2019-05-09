@@ -104,7 +104,7 @@ const Main = (props: any) => {
                     showArrows={false}
                     showIndicators={false}
                     centerMode={true}
-                    centerSlidePercentage={75}
+                    centerSlidePercentage={95}
                     swipeable
                     // onClickItem={handleCarousel}
                     // selectedItem={carouselIndex}
