@@ -16,6 +16,7 @@ const initialState = {
     image: ''
   },
   showModal: false,
+  modalLoaded: false,
   categories: [],
   categoriesStatus: "INITIAL"
 };

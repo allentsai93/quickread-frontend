@@ -1,16 +1,19 @@
 import * as React from "react";
 import styles from "./styles/Modal.module.css";
 import useGlobal from "../store";
+import spinner from '../assets/spinner.svg';
 import { Carousel } from "react-responsive-carousel";
 
 const Modal = () => {
   const [globalState, globalActions] = useGlobal();
-  const { modalContent, showModal } = globalState;
+  const { modalContent, showModal, modalLoaded } = globalState;
 
   return (
     <>
       <div className={styles.container}>
         <div className={styles.modal} style={{backgroundImage: `url(${modalContent.lead_image_url})`}}>
+        { modalLoaded ?
+          <>
           <span
             className={styles.closeModal}
             onClick={() => globalActions.modalContent.closeModal()}
@@ -53,7 +56,8 @@ const Modal = () => {
             ) : null}
             <p>Original Word Count: {modalContent.originalWordCount}</p>
           </div>
-        </div>
+        </div> 
+        </> :  <img src={spinner} className={styles.loadingIcon} alt="loading" />}
         </div>
       </div>
     </>
