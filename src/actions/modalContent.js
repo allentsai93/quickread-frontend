@@ -1,10 +1,11 @@
 import API from '../service/api';
 
-export const setModal = async (store, url) => {
+export const setModal = async (store, content) => {
     const showModal = true;
+    const modalContent = content;
     document.body.classList.add('activeModal');
-    store.setState({showModal});
-    API.getData(`summarize/${url}`).then(data => {
+    store.setState({showModal, modalContent});
+    API.getData(`summarize/${content.url}`).then(data => {
         if(data.error) {
             throw data;
         }

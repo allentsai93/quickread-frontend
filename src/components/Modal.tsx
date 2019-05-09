@@ -13,7 +13,7 @@ const Modal = () => {
       <div className={styles.container}>
         <div
           className={styles.modal}
-          style={{ backgroundImage: `url(${modalContent.lead_image_url})` }}
+          style={{ backgroundImage: `url(${modalContent.image || modalContent.lead_image_url})` }}
         >
           <span
             className={styles.closeModal}
@@ -21,16 +21,17 @@ const Modal = () => {
           >
             X
           </span>
-          {modalLoaded ? (
-            <>
-              <img
-                className={styles.image}
-                src={modalContent.lead_image_url}
-                alt="article image"
-              />
-              <div className={styles.content}>
-                <h1>{modalContent.title}</h1>
-                <h2>{modalContent.excerpt}</h2>
+
+          <img
+            className={styles.image}
+            src={modalContent.lead_image_url}
+            alt="article image"
+          />
+          <div className={styles.content}>
+            <h1>{modalContent.title}</h1>
+            <h2>{modalContent.description || modalContent.excerpt}</h2>
+            {modalLoaded ? (
+              <>
                 <div className={styles.contentStats}>
                   <a target="_blank" href={modalContent.url}>
                     {modalContent.domain || "Source"}
@@ -66,11 +67,11 @@ const Modal = () => {
                     </div>
                   </Carousel>
                 )}
-              </div>
-            </>
-          ) : (
-            <img src={spinner} className={styles.loadingIcon} alt="loading" />
-          )}
+              </>
+            ) : (
+              <img src={spinner} className={styles.loadingIcon} alt="loading" />
+            )}
+          </div>
         </div>
       </div>
     </>

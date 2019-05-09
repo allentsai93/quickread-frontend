@@ -26,7 +26,7 @@ const Post = ({ title, from, url, author, created, image, headline, description 
             //     globalActions.modalContent.setModal(url);
             // }
             setContent(true);
-            globalActions.modalContent.setModal(url);
+            globalActions.modalContent.setModal({ title, from, url, author, created, image, headline, description });
         }
         return false;
     }
