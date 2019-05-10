@@ -65,6 +65,10 @@
     max-width: 57%;
 }
 
+.content.noimgcontent {
+    max-width: 100%;
+}
+
 /* .activeArticle .content {
     max-width: 100%;
 } */

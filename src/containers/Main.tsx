@@ -19,7 +19,6 @@ type Source = {
 };
 
 type NewsPost = {
-  data: {
     source: Source;
     title: string;
     url: string;
@@ -28,7 +27,6 @@ type NewsPost = {
     urlToImage: string;
     description: string;
     content: string;
-  };
 };
 
 type NewsSource = {
@@ -84,7 +82,7 @@ const Main = (props: any) => {
             <div className={styles.listControlContainer}>
               <div className={styles.controls}>
                 {newsData ? newsData.map((source: NewsSource, i: number) => (
-                  <span key={i} onClick={() => setIndex(i)} className={index === i ? [styles.active, styles.control].join(' ') : styles.control}>{source.query}</span>
+                  <span key={i} onClick={() => setIndex(i)} className={index === i ? [styles.active, styles.control].join(' ') : styles.control}>{source.articles[0].source.name || source.query}</span>
                 )) : null}
               </div>
               <div className={styles.listContainer}>
@@ -98,7 +96,7 @@ const Main = (props: any) => {
                     centerSlidePercentage={100}
                     swipeable
                     selectedItem={index}
-                    onChange={changedIndex}             
+                    onChange={changedIndex}      
                   >
                     {listOfPosts}
                   </Carousel>

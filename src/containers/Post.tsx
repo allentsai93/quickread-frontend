@@ -40,7 +40,7 @@ const Post = ({ title, from, url, author, created, image, headline, description 
     return (
         <li className={headline ? styles.liHeadline : content ? [styles.activeLi, styles.li].join(' ') : styles.li} onClick={contentHandler}>
             <article className={headline ? styles.headlineArticle : content ? [styles.activeArticle, styles.article].join(' ') : styles.article} style={{backgroundImage: `url(${image})`}}>
-                <div className={headline ? styles.headlineContent : styles.content}>
+                <div className={headline ? styles.headlineContent : image ? styles.content : [styles.content, styles.noimgcontent].join(' ') }>
                     {/* <span>{`${author} ${new Date(created * 1000).getHours()} hours ago`}</span> */}
                     {headline ? <h4>{from}</h4> : null}
                     <h2>{title}</h2>
