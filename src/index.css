@@ -76,6 +76,8 @@ p {
   justify-content: center;
   align-items: center;
   transform: scale(1);
+  will-change: transform;
+  -webkit-transition: transform 200ms ease-in;
   transition: transform 200ms ease-in;
   padding: 0 15px;
   box-sizing: content-box;
@@ -83,6 +85,8 @@ p {
 
 .landing-page .carousel .slider-wrapper.axis-horizontal .slider .slide.selected {
   /* transform: scale(1.05); */
+  will-change: transform;
+  -webkit-transition: transform 200ms ease-out;
   transition: transform 200ms ease-out;
 }
 

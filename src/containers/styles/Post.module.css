@@ -47,6 +47,8 @@
     width: auto !important;
     max-height: 150px;
     max-width: 100%;
+    will-change: height;
+    -webkit-transition: height 100ms ease-in;
     transition: height 100ms ease-in;
 }
 
@@ -85,6 +87,8 @@
 .contentContainer {
     flex: 100%;
     order: 3;
+    will-change: min-height;
+    -webkit-transition: min-height 100ms ease-in;
     transition: min-height 100ms ease-in;
     min-height: 0;
 }
@@ -127,6 +131,8 @@
 }
 
 .li {
+    will-change: background-color;
+    -webkit-transition: background-color 50ms ease-in;
     transition: background-color 50ms ease-in;
     width: auto;
     border-radius: 2px;

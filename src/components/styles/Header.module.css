@@ -4,20 +4,22 @@ header {
     top: 0;
     height: 60px;
     width: 100%;
-    background-color: rgb(130, 193, 183);
+    background-color: black;
     display: flex;
     justify-content: flex-start;
     padding: 0 25px;
     align-items: center;
     z-index: 1;
     flex-flow: row wrap;
+    will-change: background-color;
+    -webkit-transition: background-color 100ms ease-in;
     transition: background-color 100ms ease-in;
     -webkit-box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
     box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
 }
 
 .logo {
-    color: white;
+    color: rgb(130, 193, 183);
     text-decoration: none;
     text-transform: lowercase;
     font-size: 1.3em;
@@ -26,7 +28,7 @@ header {
 
 .beta {
     font-size: inherit;
-    color: black;
+    color: white;
 }
 
 @media (min-width: 1024px) {

@@ -3,6 +3,8 @@
     position: relative;
     border-bottom: 1px solid #efefef;
     background-color: white;
+    will-change: background-color;
+    -webkit-transition: background-color 100ms ease-in;
     transition: background-color 50ms ease-in;
     cursor: pointer;
 }

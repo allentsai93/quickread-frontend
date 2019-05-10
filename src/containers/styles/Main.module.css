@@ -22,6 +22,8 @@
     margin: 5px 0px;
     background-color: #212121;
     padding-top: 0;
+    will-change: background-color;
+    -webkit-transition: background-color 50ms ease-in;
     transition: background-color 50ms ease-in;
     width: auto;
 }
@@ -127,11 +129,15 @@
     font-weight: bold;
     cursor: pointer;
     color: white;
+    will-change: color;
+    -webkit-transition: color 400ms ease-in;
     transition: color 400ms ease-in;
 }
 
 .active {
     color: #12ffd9;
+    will-change: color;
+    -webkit-transition: color 100ms ease-out;
     transition: color 100ms ease-out;
 }
 
@@ -165,10 +171,14 @@
 
 .enterActiveModal > * {
     transform: scale(1);
+    will-change: transform;
+    -webkit-transition: transform 150ms ease-in;
     transition: transform 150ms ease-in;
 }
 
 .exitActiveModal > * {
     transform: scale(0);
+    will-change: transform;
+    -webkit-transition: transform 150ms ease-in;
     transition: transform 150ms ease-in;
 }

@@ -22,6 +22,8 @@
     border-bottom: 1px solid #e8e8e8;
     letter-spacing: 1px;
     font-size: 0.5em;
+    will-change: background-color;
+    -webkit-transition: background-color 100ms ease-in;
     transition: background-color 100ms ease-in;
 }
 

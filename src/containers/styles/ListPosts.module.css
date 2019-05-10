@@ -34,6 +34,8 @@
 }
 
 .li {
+    will-change: background-color;
+    -webkit-transition: background-color 50ms ease-in;
     transition: background-color 50ms ease-in;
     width: auto;
     border-radius: 2px;
