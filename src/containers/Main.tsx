@@ -96,7 +96,8 @@ const Main = (props: any) => {
                     centerSlidePercentage={100}
                     swipeable
                     selectedItem={index}
-                    onChange={changedIndex}      
+                    onChange={changedIndex}
+                    swipeScrollTolerance={3}      
                   >
                     {listOfPosts}
                   </Carousel>
