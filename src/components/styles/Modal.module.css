@@ -87,16 +87,20 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        font-size: 1.5em;
+        font-size: 1.1em;
     }
     .image {
         display: none;
     }
     .content {
-        background-color: #247d71d6;
+        background-color: rgba(0, 97, 84, 0.74);
+        height: 100%;
     }
     .closeModal {
         position: fixed;
+    }
+    .content.loadedContent {
+        height: auto;
     }
 }
 

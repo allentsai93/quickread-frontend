@@ -19,8 +19,8 @@ header {
     color: rgb(130, 193, 183);
     text-decoration: none;
     text-transform: lowercase;
-    font-size: 1.3em;
-    font-weight: 200;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 .beta {
@@ -31,5 +31,13 @@ header {
 @media (min-width: 1024px) {
     header:hover {
         background-color: black;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        justify-content: center;
+        height: 42px;
+        position: sticky;
     }
 }

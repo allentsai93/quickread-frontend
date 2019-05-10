@@ -2,7 +2,7 @@ import * as React from "react";
 import styles from "./styles/Modal.module.css";
 import useGlobal from "../store";
 import spinner from "../assets/spinner.svg";
-import { Carousel } from "react-responsive-carousel";
+import SwipeableViews from 'react-swipeable-views';
 
 const Modal = () => {
   const [globalState, globalActions] = useGlobal();
@@ -27,7 +27,7 @@ const Modal = () => {
             src={modalContent.image || modalContent.lead_image_url}
             alt="article image"
           />
-          <div className={styles.content}>
+          <div className={modalLoaded ? [styles.content, styles.loadedContent].join(' ') : styles.content}>
             <h1>{modalContent.title}</h1>
             <h2>{modalContent.description || modalContent.excerpt}</h2>
             {modalLoaded ? (
@@ -49,13 +49,7 @@ const Modal = () => {
                     <p>{modalContent.content}</p>
                   </div>
                 ) : (
-                  <Carousel
-                    showThumbs={false}
-                    showStatus={false}
-                    showArrows={false}
-                    showIndicators={false}
-                    centerMode={true}
-                    centerSlidePercentage={95}
+                  <SwipeableViews
                   >
                     <div className={styles.contentContainer}>
                       <h3>Summarized Article</h3>
@@ -65,7 +59,7 @@ const Modal = () => {
                       <h3>Original Article</h3>
                       <p>{modalContent.content}</p>
                     </div>
-                  </Carousel>
+                  </SwipeableViews>
                 )}
               </>
             ) : (

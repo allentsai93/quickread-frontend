@@ -53,9 +53,10 @@ const Post = ({ title, from, url, author, created, image, headline, description 
                     />
                 : null}
                 </div> */}
-                {!headline ? 
+                {!headline && image ? 
                     <div className={styles.imgContainer}>
                         <img src={image} className={styles.img}/>
+                        <div className={styles.shadowOverlay}></div>
                     </div> : null
                 }
             </article>

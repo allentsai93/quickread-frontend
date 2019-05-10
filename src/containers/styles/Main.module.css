@@ -40,6 +40,7 @@
     min-width: 300px;
     height: 100%;
     margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .listControlContainer {
@@ -126,14 +127,14 @@
     font-size: 2em;
     font-weight: bold;
     cursor: pointer;
-    color: white;
+    color: #e6e6e6;
     will-change: color;
     -webkit-transition: color 400ms ease-in;
     transition: color 400ms ease-in;
 }
 
 .active {
-    color: #12ffd9;
+    color: #58ffad;
     will-change: color;
     -webkit-transition: color 100ms ease-out;
     transition: color 100ms ease-out;
@@ -185,4 +186,11 @@
     will-change: transform;
     -webkit-transition: transform 150ms ease-in;
     transition: transform 150ms ease-in;
+}
+
+@media (max-width: 768px) {
+    .controls {
+        font-size: 0.55em;
+        border-bottom: 1px solid #1f1f1f;
+    }
 }
