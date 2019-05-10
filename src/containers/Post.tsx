@@ -19,7 +19,6 @@ const Post = ({ title, from, url, author, created, image, headline, description 
     const [globalState, globalActions] = useGlobal();
 
     const contentHandler = (e: any) => {
-        e.stopPropagation();
         if(!headline) {
             // if(!content) {
             //     setContent(true);
@@ -32,7 +31,6 @@ const Post = ({ title, from, url, author, created, image, headline, description 
     }
 
     const closeContentHandler = (e: any) => {
-        e.stopPropagation();
         setContent(false);
         return false;
     }

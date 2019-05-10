@@ -146,7 +146,11 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
-    margin: 10px 0;
+    padding: 10px 0;
+    position: sticky;
+    top: 0px;
+    background-color: black;
+    z-index: 1;
 }
 
 @media (min-width: 1024px) {

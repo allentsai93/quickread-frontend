@@ -8,10 +8,10 @@ import ListPosts from "./ListPosts";
 import Header from "../components/Header";
 import HeadlinePost from "./HeadlinePost";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
 import useGlobal from "../store";
 import { CSSTransition } from "react-transition-group";
 import Modal from "../components/Modal";
+import SwipeableViews from 'react-swipeable-views';
 
 type Source = {
   id: string;
@@ -87,21 +87,13 @@ const Main = (props: any) => {
               </div>
               <div className={styles.listContainer}>
                 {newsData && newsData.length > 1 ? (
-                  <Carousel
-                    showThumbs={false}
-                    showStatus={false}
-                    showArrows={false}
-                    showIndicators={false}
-                    centerMode={true}
-                    centerSlidePercentage={100}
-                    swipeable
-                    selectedItem={index}
-                    onChange={changedIndex}
-                    swipeScrollTolerance={2}
-                    transitionTime={600}      
+                  <SwipeableViews
+                    index={index}
+                    onChangeIndex={changedIndex}
+                    animateHeight={true}
                   >
                     {listOfPosts}
-                  </Carousel>
+                  </SwipeableViews>
                 ) : (
                   listOfPosts
                 )}
