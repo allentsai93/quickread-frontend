@@ -3,7 +3,6 @@ import styles from "./styles/LandingPage.module.css";
 import searchIcon from "../assets/search.svg";
 import { CSSTransition } from "react-transition-group";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
 import Typist from "react-typist";
 import Card from "../components/Card";
 import AutoSuggest from "../components/AutoSuggest";
@@ -128,27 +127,6 @@ const LandingPage = (props: any) => {
       <div className={styles.options}>
         <form className={styles.filterForm}>
           {categoriesStatus == "SUCCESS" && categories && (
-            // <Carousel
-            //   showThumbs={false}
-            //   showStatus={false}
-            //   showArrows={false}
-            //   showIndicators={false}
-            //   centerMode={true}
-            //   centerSlidePercentage={50}
-            //   swipeable
-            //   className={styles.carousel}
-            //   onClickItem={handleCarousel}
-            //   selectedItem={carouselIndex}
-            // >
-            //   {categories!.map((cat: Source, i: number) => (
-            //     <Card
-            //       title={cat.category}
-            //       key={cat.category + i.toString()}
-            //       content={cat.content}
-            //       checkbox={handleCheckbox}
-            //     />
-            //   ))}
-            // </Carousel>
             <>
             {categories!.map((cat: Source, i: number) => (
                 <Card

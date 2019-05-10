@@ -9,6 +9,9 @@
     min-width: 300px;
     z-index: 10;
     box-sizing: content-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .catContainer > p {
@@ -40,29 +43,31 @@
 
 
 .business {
-    
+    background-image: url('../../assets/business.jpg');
 }
 
 .entertainment {
-
+    background-image: url('../../assets/entertainment.jpg');
+    background-position: top center;
 }
 
 .general {
-
+    background-image: url('../../assets/general.jpg');
 }
 
 .health {
-
+    background-image: url('../../assets/health.jpg');
 }
 
 .science {
-
+    background-image: url('../../assets/science.jpg');
 }
 
 .sports {
-
+    background-image: url('../../assets/sports.jpg');
+    background-position: center 34%;
 }
 
 .technology {
-
+    background-image: url('../../assets/technology.jpg');
 }

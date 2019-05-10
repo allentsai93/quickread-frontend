@@ -1,8 +1,6 @@
 
 .checkboxInputDiv {
     position: relative;
-    border-bottom: 1px solid #efefef;
-    background-color: white;
     will-change: background-color;
     -webkit-transition: background-color 200ms ease-in;
     transition: background-color 200ms ease-in;
@@ -17,7 +15,7 @@
 
 
 .checkboxInputActive {
-    background-color: #56b19f;
+    background-color: #004235e0;
     color: white;
 }
 .checkbox {
@@ -30,14 +28,20 @@
 .checkboxInputDiv label {
     display: flex;
     width: 100%;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: white;
     height: 100%;
     cursor: pointer;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding-bottom: 20px;
+    align-items: flex-start;
+    padding-left: 10px;
 }
 
 @media (min-width: 1024px) {
     .checkboxInputDiv:hover {
-        background-color: #b7e2d9;
+        background-color: rgba(0, 0, 0, 0.35);
     }
 }
