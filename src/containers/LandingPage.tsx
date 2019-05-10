@@ -128,31 +128,41 @@ const LandingPage = (props: any) => {
       <div className={styles.options}>
         <form className={styles.filterForm}>
           {categoriesStatus == "SUCCESS" && categories && (
-            <Carousel
-              showThumbs={false}
-              showStatus={false}
-              showArrows={false}
-              showIndicators={false}
-              centerMode={true}
-              centerSlidePercentage={50}
-              swipeable
-              className={styles.carousel}
-              onClickItem={handleCarousel}
-              selectedItem={carouselIndex}
-            >
-              {categories!.map((cat: Source, i: number) => (
+            // <Carousel
+            //   showThumbs={false}
+            //   showStatus={false}
+            //   showArrows={false}
+            //   showIndicators={false}
+            //   centerMode={true}
+            //   centerSlidePercentage={50}
+            //   swipeable
+            //   className={styles.carousel}
+            //   onClickItem={handleCarousel}
+            //   selectedItem={carouselIndex}
+            // >
+            //   {categories!.map((cat: Source, i: number) => (
+            //     <Card
+            //       title={cat.category}
+            //       key={cat.category + i.toString()}
+            //       content={cat.content}
+            //       checkbox={handleCheckbox}
+            //     />
+            //   ))}
+            // </Carousel>
+            <>
+            {categories!.map((cat: Source, i: number) => (
                 <Card
                   title={cat.category}
                   key={cat.category + i.toString()}
-                  content={cat.content}
+                  // content={cat.content}
                   checkbox={handleCheckbox}
                 />
-              ))}
-            </Carousel>
+            ))}
+            </>
           )}
         </form>
       </div>
-      <div className={styles.inputContainer}>
+      {/* <div className={styles.inputContainer}>
         <form>
           <input
             type={"text"}
@@ -197,7 +207,7 @@ const LandingPage = (props: any) => {
             <></>
           )}
         </CSSTransition>
-      </div>
+      </div> */}
       {/* {checkboxInputs ? 
       message!.split(', ').map(msg => <Typist className={styles.Typist} key={generateKey(msg)} cursor={{hideWhenDone: true}} >
         <span>{msg}</span>

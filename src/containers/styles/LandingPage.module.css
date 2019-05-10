@@ -153,10 +153,13 @@ button img {
 
 .filterForm {
     color: black;
-    width: 100vw;
+    width: 100%;
+    max-width: 1100px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-flow: row wrap;
+    box-shadow: 0px -1px 5px 0px rgba(0,0,0,0.35);
 }
 
 
