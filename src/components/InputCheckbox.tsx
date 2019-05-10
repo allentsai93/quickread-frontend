@@ -19,7 +19,7 @@ const InputCheckbox = ({id, name, checkboxListener} : tProps) => {
         <div
         className={active ? [styles.checkboxInputDiv, styles.checkboxInputActive].join(' ') : styles.checkboxInputDiv}
       >
-        <label htmlFor={id}>{name}</label>
+        <label htmlFor={id}><span>{name}</span></label>
         <span className={styles.checkbox}>
           <input
             type={"checkbox"}

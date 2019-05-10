@@ -109,8 +109,8 @@ const LandingPage = (props: any) => {
 
   const handleForm = (ev: any) => {
     const queries = [...checkboxInputs].join("+");
-    const query = `?q=${queries}`;
-    props.history.push(`/news/multi/${query}`);
+    const query = `?category=${queries}`;
+    props.history.push(`/news${query}`);
   };
 
   return (
