@@ -11,6 +11,7 @@ const ListPosts = ({posts, query} : any) => {
             <Post
               title={post.title}
               from={post.source.name}
+              sourceId={post.source.id}
               url={post.url}
               author={post.source.name}
               created={post.publishedAt}

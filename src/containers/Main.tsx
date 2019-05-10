@@ -37,7 +37,7 @@ type NewsSource = {
 
 const Main = (props: any) => {
   const [globalState, globalActions] = useGlobal();
-  const { newsDataStatus, newsData, showModal } = globalState;
+  const { newsDataStatus, newsData, showModal, categories } = globalState;
   const [index, setIndex] = React.useState(0);
 
   React.useEffect(() => {
@@ -65,6 +65,10 @@ const Main = (props: any) => {
     setIndex(e);
   }
 
+  const addNewList = () => {
+
+  }
+
   const listOfPosts =
     newsDataStatus == "SUCCESS"
       ? newsData.map((source: NewsSource, i: number) => (
@@ -81,6 +85,7 @@ const Main = (props: any) => {
             <HeadlinePost posts={newsData} />
             <div className={styles.listControlContainer}>
               <div className={styles.controls}>
+                <span onClick={addNewList} className={styles.control}>+</span>
                 {newsData ? newsData.map((source: NewsSource, i: number) => (
                   <span key={i} onClick={() => setIndex(i)} className={index === i ? [styles.active, styles.control].join(' ') : styles.control}>{source.query}</span>
                 )) : null}

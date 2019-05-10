@@ -6,6 +6,7 @@ import useGlobal from '../store';
 type TParams =  { 
     title: string;
     from: string;
+    sourceId: string;
     url: string;
     author: string;
     created: number;
@@ -14,16 +15,12 @@ type TParams =  {
     headline: boolean;
 };
 
-const Post = ({ title, from, url, author, created, image, headline, description }: TParams) => {
+const Post = ({ title, from, url, author, created, image, headline, description, sourceId }: TParams) => {
     const [content, setContent] = React.useState(false);
     const [globalState, globalActions] = useGlobal();
 
     const contentHandler = (e: any) => {
         if(!headline) {
-            // if(!content) {
-            //     setContent(true);
-            //     globalActions.modalContent.setModal(url);
-            // }
             setContent(true);
             globalActions.modalContent.setModal({ title, from, url, author, created, image, headline, description });
         }
@@ -37,6 +34,7 @@ const Post = ({ title, from, url, author, created, image, headline, description 
 
     return (
         <li className={headline ? styles.liHeadline : content ? [styles.activeLi, styles.li].join(' ') : styles.li} onClick={contentHandler}>
+            {!headline ? <span className={styles.newsSourceBtn}>All {from} Articles</span> : null}
             <article className={headline ? styles.headlineArticle : content ? [styles.activeArticle, styles.article].join(' ') : styles.article} style={{backgroundImage: `url(${image})`}}>
                 <div className={headline ? styles.headlineContent : image ? styles.content : [styles.content, styles.noimgcontent].join(' ') }>
                     {/* <span>{`${author} ${new Date(created * 1000).getHours()} hours ago`}</span> */}
@@ -44,15 +42,6 @@ const Post = ({ title, from, url, author, created, image, headline, description 
                     <h2>{title}</h2>
                     <p>{description}</p>
                 </div>
-                {/* {content ? <span className={styles.closeBtn} onClick={(e: any) => closeContentHandler(e)}>X</span> : null}
-                <div className={`${styles.contentContainer} ${content ? styles.contentContainerActive : ''}`}>
-                { content ? 
-                    <Content 
-                        url={url}
-                        domain={from}
-                    />
-                : null}
-                </div> */}
                 {!headline && image ? 
                     <div className={styles.imgContainer}>
                         <img src={image} className={styles.img}/>
