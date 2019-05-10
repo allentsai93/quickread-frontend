@@ -24,7 +24,7 @@ const Modal = () => {
 
           <img
             className={styles.image}
-            src={modalContent.lead_image_url}
+            src={modalContent.image || modalContent.lead_image_url}
             alt="article image"
           />
           <div className={styles.content}>

@@ -40,7 +40,6 @@
     flex: 10;
     min-width: 300px;
     height: 100%;
-    border-top: 1px solid #e6e6e6;
 }
 
 .listControlContainer {
@@ -49,8 +48,7 @@
     align-items: flex-start;
     flex-flow: column wrap;
     width: 100vw;
-    max-width: 100%;
-    margin-top: 10px;
+    max-width: 1100px;
 }
 
 .buttonContainer {
@@ -122,6 +120,27 @@
     font-size: 0.6em;
     text-transform: uppercase;
     margin: 10px;
+}
+
+.control {
+    font-size: 2em;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    transition: color 400ms ease-in;
+}
+
+.active {
+    color: #12ffd9;
+    transition: color 100ms ease-out;
+}
+
+.controls {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin: 10px 0;
 }
 
 @media (min-width: 1024px) {

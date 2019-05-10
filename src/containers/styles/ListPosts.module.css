@@ -8,7 +8,7 @@
     /* border: 1px solid #fff7f7; */
     border-radius: 10px;
     position: relative;
-    background-color: #ffffff;
+    background-color: #1b1b1b;
     /* border-left: none;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0; */
@@ -37,7 +37,7 @@
     transition: background-color 50ms ease-in;
     width: auto;
     border-radius: 2px;
-    color: black;
+    color: white;
     min-height: 150px;
     display: flex;
     flex-direction: column;
@@ -54,11 +54,11 @@
 .categoryTitle {
     font-weight: bold;
     font-size: 2em;
-    color: #82c1b6;
+    color: #fff;
     margin: 1vmin 0.5vmin 3vmin;
     text-transform: uppercase;
     text-align: left;
-    border-bottom: 15px solid;
+    border-bottom: 8px solid;
 }
 @media (max-width: 710px) {
     .li {
@@ -69,7 +69,6 @@
     }
     .ul {
         box-shadow: none;
-        border-right: 1px solid #e6e6e6;
         border-radius: 0;
     }
 

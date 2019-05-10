@@ -34,8 +34,9 @@ const HeadlinePost = ({ posts }: TParams) => {
     return (
         <div className={styles.headlineCarousel}>
         <div className={styles.headlinesContainer}>
-          {posts!.slice(0, 1).map((post: any, i: number) => (
-            <div key={i} className={styles.headline1}>
+          {posts!.slice(0, 1).map((post: any, i: number) => {
+            if(post.articles[0].urlToImage) {
+            return ( <div key={i} className={styles.headline1}>
               <Post
                 title={post.query}
                 from={post.articles[0].source.name}
@@ -46,12 +47,14 @@ const HeadlinePost = ({ posts }: TParams) => {
                 description={''}
                 headline
               />
-            </div>
-          ))}
+            </div> )
+            }
+          })}
           <div className={posts!.length > 1 ? styles.subHeadlineContainer : ''}>
             {posts!.slice(1, 3).map(
-              (post: any, i: number) => (
-                <div key={i}>
+              (post: any, i: number) => {
+                if(post.articles[0].urlToImage) {
+                return ( <div key={i}>
                   <Post
                     title={post.query}
                     from={post.articles[0].source.name}
@@ -62,8 +65,8 @@ const HeadlinePost = ({ posts }: TParams) => {
                     description={''}
                     headline
                   />
-                </div>
-              )
+                </div> )}
+              }
             )}
           </div>
         </div>

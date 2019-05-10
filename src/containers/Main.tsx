@@ -40,6 +40,7 @@ type NewsSource = {
 const Main = (props: any) => {
   const [globalState, globalActions] = useGlobal();
   const { newsDataStatus, newsData, showModal } = globalState;
+  const [index, setIndex] = React.useState(0);
 
   React.useEffect(() => {
     let url = "topheadlines";
@@ -62,6 +63,10 @@ const Main = (props: any) => {
     globalActions.newsData.getNewsData(url);
   }, []);
 
+  const changedIndex = (e: any) => {
+    setIndex(e);
+  }
+
   const listOfPosts =
     newsDataStatus == "SUCCESS"
       ? newsData.map((source: NewsSource, i: number) => (
@@ -77,25 +82,11 @@ const Main = (props: any) => {
           <div className={[styles.container, "main-page"].join(" ")}>
             <HeadlinePost posts={newsData} />
             <div className={styles.listControlContainer}>
-              {/* <div className={styles.Controls}>
-                  <Button src={add} event={this.showSelectionHandler} />
-                  {this.state.showSelection ? (
-                    <ul className={styles.activeList}>
-                      <li onClick={() => this.addPostsHandler("news")}>
-                        Option 1
-                      </li>
-                      <li onClick={() => this.addPostsHandler("anythinggoesnews")}>
-                        Option 2
-                      </li>
-                      <li onClick={() => this.addPostsHandler("truereddit")}>
-                        Option 3
-                      </li>
-                      <li onClick={() => this.addPostsHandler("redditdotcom")}>
-                        Option 4
-                      </li>
-                    </ul>
-                  ) : <ul></ul>}
-                </div> */}
+              <div className={styles.controls}>
+                {newsData ? newsData.map((source: NewsSource, i: number) => (
+                  <span key={i} onClick={() => setIndex(i)} className={index === i ? [styles.active, styles.control].join(' ') : styles.control}>{source.query}</span>
+                )) : null}
+              </div>
               <div className={styles.listContainer}>
                 {newsData && newsData.length > 1 ? (
                   <Carousel
@@ -104,10 +95,10 @@ const Main = (props: any) => {
                     showArrows={false}
                     showIndicators={false}
                     centerMode={true}
-                    centerSlidePercentage={95}
+                    centerSlidePercentage={100}
                     swipeable
-                    // onClickItem={handleCarousel}
-                    // selectedItem={carouselIndex}
+                    selectedItem={index}
+                    onChange={changedIndex}             
                   >
                     {listOfPosts}
                   </Carousel>
