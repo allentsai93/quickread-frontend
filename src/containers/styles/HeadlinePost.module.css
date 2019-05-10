@@ -36,11 +36,14 @@
     flex: 40%;
 }
 
+.headlineTitle {
+    display: none;
+}
 
 @media (max-width: 768px) {
     .subHeadlineContainer {
         min-width: auto;
-        flex-flow: column wrap;
+        flex-flow: row wrap;
         flex: 66%;
     }
     .subHeadlineContainer div:first-child {
@@ -57,9 +60,17 @@
         min-width: auto;
         margin: 1vw;
     }
-
-    .headlineCarousel {
-        height: 30vmax;
+    .headlineTitle {
+        display: block;
+        margin: 0;
+        margin-left: 25px;
+        align-self: flex-start;
+        font-size: 1.3em;
+        margin-bottom: 4px;
+        color: #57ffad;
     }
-
+    .headlineCarousel {
+        padding-top: 3px;
+        border-top: 1px solid #1f1f1f;
+    }
 }

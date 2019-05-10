@@ -32,6 +32,8 @@ type TParams = {
   
 const HeadlinePost = ({ posts }: TParams) => {
     return (
+      <>
+        <h1 className={styles.headlineTitle}>the scoop</h1>
         <div className={styles.headlineCarousel}>
         <div className={styles.headlinesContainer}>
           {posts!.slice(0, 1).map((post: any, i: number) => {
@@ -71,6 +73,7 @@ const HeadlinePost = ({ posts }: TParams) => {
           </div>
         </div>
       </div>
+      </>
     )
 };
 
