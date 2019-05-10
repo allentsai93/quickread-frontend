@@ -34,14 +34,12 @@
 
 
 .listContainer {
-    /* display: flex;
-    justify-content: center;
-    flex-flow: row wrap; */
     width: 100%;
     max-width: 100%;
     flex: 10;
     min-width: 300px;
     height: 100%;
+    margin-top: 10px;
 }
 
 .listControlContainer {
@@ -151,6 +149,8 @@
     top: 0px;
     background-color: black;
     z-index: 1;
+    -webkit-box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
 }
 
 @media (min-width: 1024px) {
