@@ -4,7 +4,7 @@ import InputCheckbox from './InputCheckbox';
 
 type tProps = {
   title: string,
-  content: Content[],
+  // content: Content[],
   checkbox: any
 }
 
@@ -17,16 +17,12 @@ type Content = {
     country: string;
 };
 
-const Card = ({title, content, checkbox} : tProps) => {
+const Card = ({title, checkbox} : tProps) => {
     return (
         <div
-        key={title}
         className={[styles.catContainer, styles[title]].join(" ")}
       >
-        <p>{title}</p>
-        <div className={styles.sourceListContainer}>
-            {content.map((source:any, i:number) => ( <InputCheckbox id={source.id} name={source.name} key={i} checkboxListener={checkbox}/> ))}
-        </div>
+            <InputCheckbox id={title} name={title} checkboxListener={checkbox}/>
       </div>
     )
 };

@@ -46,14 +46,14 @@ const Main = (props: any) => {
     if (props.location.search) {
       const searchParams = new URLSearchParams(props.location.search);
       const search = searchParams
-        .get("q")!
+        .get("category")!
         .split(" ")
         .join(",");
       const title = searchParams
-        .get("q")!
+        .get("category")!
         .split(" ")
         .join(", ");
-      url = `sources/news/noparse?q=${search}`;
+      url = `topheadlines?category=${search}`;
       document.title = `Teeldr - ${title}`;
     } else {
       document.title = `Teeldr - Top Headlines`;
@@ -82,7 +82,7 @@ const Main = (props: any) => {
             <div className={styles.listControlContainer}>
               <div className={styles.controls}>
                 {newsData ? newsData.map((source: NewsSource, i: number) => (
-                  <span key={i} onClick={() => setIndex(i)} className={index === i ? [styles.active, styles.control].join(' ') : styles.control}>{source.articles[0].source.name || source.query}</span>
+                  <span key={i} onClick={() => setIndex(i)} className={index === i ? [styles.active, styles.control].join(' ') : styles.control}>{source.query}</span>
                 )) : null}
               </div>
               <div className={styles.listContainer}>
