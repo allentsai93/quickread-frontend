@@ -97,7 +97,8 @@ const Main = (props: any) => {
                     swipeable
                     selectedItem={index}
                     onChange={changedIndex}
-                    swipeScrollTolerance={3}      
+                    swipeScrollTolerance={2}
+                    transitionTime={600}      
                   >
                     {listOfPosts}
                   </Carousel>
