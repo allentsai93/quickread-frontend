@@ -147,6 +147,10 @@
         object-fit: cover;
         object-position: center;
     }
+    .heroContainer {
+        min-height: 50vh;
+        overflow: hidden;
+    }
 }
 
 @media (min-width: 769px) {
