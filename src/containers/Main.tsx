@@ -74,7 +74,7 @@ const Main = (props: any) => {
 
   return (
     <>
-      <Header />
+      <Header logo />
       {newsDataStatus == "SUCCESS" ? (
         <>
           <div className={[styles.container, "main-page"].join(" ")}>

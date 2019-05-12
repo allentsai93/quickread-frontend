@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import styles from './styles/Header.module.css';
 
 
-const Header = () => {
+const Header = (props: any) => {
     return (
-        <header className={styles.header}>
-          <Link to="/" className={styles.logo}>Teeldr<span className={styles.beta}>Beta</span></Link>
+        <header className={props.className || styles.header}>
+          {props.logo ? <Link to="/" className={styles.logo}>Teeldr<span className={styles.beta}>Beta</span></Link> : null}
+          {props.children}
         </header>
     )
 };

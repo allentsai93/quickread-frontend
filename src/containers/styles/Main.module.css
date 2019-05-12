@@ -167,25 +167,25 @@
 }
 
 .exitModal > * {
-    transform: scale(1);
+    right: 0;
 }
 
 .enterModal > * {
-    transform: scale(0);
+    right: -100vw;
 }
 
 .enterActiveModal > * {
-    transform: scale(1);
-    will-change: transform;
-    -webkit-transition: transform 150ms ease-in;
-    transition: transform 150ms ease-in;
+    right: 0;
+    will-change: right;
+    -webkit-transition: right 150ms ease-in;
+    transition: right 150ms ease-in;
 }
 
 .exitActiveModal > * {
-    transform: scale(0);
-    will-change: transform;
-    -webkit-transition: transform 150ms ease-in;
-    transition: transform 150ms ease-in;
+    right: -100vw;
+    will-change: right;
+    -webkit-transition: right 150ms ease-in;
+    transition: right 150ms ease-in;
 }
 
 @media (max-width: 768px) {

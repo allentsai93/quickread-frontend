@@ -9,11 +9,11 @@ export const setModal = async (store, content) => {
         if(data.error) {
             throw data;
         }
-        const modalContent = data;
+        const modalContent = {...content, ...data};
         const modalLoaded = true;
         store.setState({modalContent, modalLoaded});
     }).catch(err => {
-        const modalContent = err;
+        const modalContent = {...content, ...err};
         const modalLoaded = true;
         store.setState({modalContent, modalLoaded});
     })
