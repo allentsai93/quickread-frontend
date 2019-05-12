@@ -19,6 +19,7 @@ html {
 }
 body.activeModal {
   overflow: hidden;
+  position: relative;
 }
 
 #root {
