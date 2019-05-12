@@ -38,6 +38,7 @@ header {
     header {
         justify-content: center;
         height: 42px;
+        position: -webkit-sticky;
         position: sticky;
     }
 }
